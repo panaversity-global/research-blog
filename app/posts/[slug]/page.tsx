@@ -3,7 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getAllPosts, getPostBySlug } from "@/lib/posts"
 import Markdown from "@/components/MarkdownWrapper"
-import { ArrowLeft, Calendar, Clock, User, Tag, Share2 } from "lucide-react"
+import { ArrowLeft, Calendar, Clock, User, Tag, Share2, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ShareButton } from "@/components/ShareButton"
@@ -267,10 +267,20 @@ export default async function PostPage({ params }: PageProps) {
             ← Back to Home
           </Link>
           <div className="flex gap-4 ml-auto">
-            <Link href={`/posts/${slug}/md`} className="text-slate-400 hover:text-white transition-colors duration-200">
+            <Link 
+              href={`/posts/${slug}/md`} 
+              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 hover:bg-slate-800/50 px-3 py-2 rounded-lg"
+              title="View raw markdown content"
+            >
+              <FileText className="h-4 w-4" />
               Raw (.md)
             </Link>
-            <Link href={`/posts/${slug}/json`} className="text-slate-400 hover:text-white transition-colors duration-200">
+            <Link 
+              href={`/posts/${slug}/json`} 
+              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 hover:bg-slate-200/50 px-3 py-2 rounded-lg"
+              title="View JSON metadata"
+            >
+              <FileText className="h-4 w-4" />
               JSON
             </Link>
           </div>

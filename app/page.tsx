@@ -5,6 +5,7 @@ import { defaultMetadata } from "@/lib/seo"
 import { ArrowRight, Calendar, Clock, User, Tag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { SITE_CONTENT } from "@/lib/content"
 
 export const metadata: Metadata = defaultMetadata
 
@@ -25,24 +26,23 @@ export default async function HomePage() {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Modern Development
+              {SITE_CONTENT.pages.home.hero.title}
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Insights & Best Practices
+                {SITE_CONTENT.pages.home.hero.subtitle}
               </span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Stay ahead with expert analysis, tutorials, and insights into modern web development, 
-              technology trends, and coding best practices.
+              {SITE_CONTENT.pages.home.hero.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 text-lg">
-                <Link href="/blog">
-                  Explore Articles
+                <Link href={SITE_CONTENT.pages.home.hero.cta.primary.href}>
+                  {SITE_CONTENT.pages.home.hero.cta.primary.text}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" className="border-slate-400 text-slate-300 hover:bg-slate-800/50 px-8 py-3 text-lg">
-                <Link href="/about">Learn More</Link>
+                <Link href={SITE_CONTENT.pages.home.hero.cta.secondary.href}>{SITE_CONTENT.pages.home.hero.cta.secondary.text}</Link>
               </Button>
             </div>
           </div>
@@ -54,10 +54,10 @@ export default async function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Featured Articles
+              {SITE_CONTENT.pages.home.featured.title}
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Discover our latest insights, tutorials, and deep dives into modern web development
+              {SITE_CONTENT.pages.home.featured.description}
             </p>
           </div>
 

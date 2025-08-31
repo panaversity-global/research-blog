@@ -61,14 +61,19 @@ const nextConfig = {
   // URL rewrites
   async rewrites() {
     return [
-      { source: "/posts/:slug.md", destination: "/posts/:slug/md" },
-      { source: "/posts/:slug.json", destination: "/posts/:slug/json" },
+      { 
+        source: "/posts/:slug.md", 
+        destination: "/posts/:slug/md" 
+      },
+      { 
+        source: "/posts/:slug.json", 
+        destination: "/posts/:slug/json" 
+      },
     ]
   },
   
   // Experimental features for better performance
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   }
 }

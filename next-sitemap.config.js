@@ -9,7 +9,8 @@ module.exports = {
     '/_next/*',
     '/private/*',
     '*.json',
-    '*.md'
+    '/posts/*/md',
+    '/posts/*/json'
   ],
   robotsTxtOptions: {
     policies: [
@@ -22,7 +23,8 @@ module.exports = {
           '/_next/',
           '/private/',
           '*.json',
-          '*.md'
+          '/posts/*/md',
+          '/posts/*/json'
         ]
       },
       {
@@ -37,9 +39,9 @@ module.exports = {
       }
     ],
     additionalSitemaps: [
-      'https://techblog.com/sitemap.xml',
-      'https://techblog.com/feed.xml'
-    ]
+      'https://techblog.com/sitemap.xml'
+    ],
+    host: 'https://techblog.com'
   },
   changefreq: 'daily',
   priority: 0.7,

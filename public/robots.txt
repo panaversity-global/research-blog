@@ -6,7 +6,8 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
 Disallow: *.json
-Disallow: *.md
+Disallow: /posts/*/md
+Disallow: /posts/*/json
 
 # Googlebot
 User-agent: Googlebot
@@ -20,5 +21,5 @@ Disallow: /private/
 Host: http://localhost:3000
 
 # Sitemaps
+Sitemap: http://localhost:3000/sitemap.xml
 Sitemap: https://techblog.com/sitemap.xml
-Sitemap: https://techblog.com/feed.xml

@@ -1,39 +1,9 @@
 import Link from 'next/link'
-import { Mail, MapPin, Phone, Clock, Twitter, Facebook, Linkedin, Github, Rss } from 'lucide-react'
+import { Mail, MapPin, Phone, Clock, Twitter, Facebook, Linkedin, Github } from 'lucide-react'
+import { SITE_CONTENT } from '@/lib/content'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-
-  const navigation = {
-    main: [
-      { name: 'Home', href: '/' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'About', href: '/about' },
-      { name: 'Contact', href: '/contact' },
-      { name: 'Privacy', href: '/privacy' },
-      { name: 'Search', href: '/search' },
-    ],
-    resources: [
-      { name: 'RSS Feed', href: '/feed.xml' },
-      { name: 'Sitemap', href: '/sitemap.xml' },
-      { name: 'Latest Posts', href: '/blog' },
-      { name: 'Popular Tags', href: '/search' },
-    ],
-    legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
-      { name: 'Cookie Policy', href: '/cookies' },
-      { name: 'DMCA', href: '/dmca' },
-    ]
-  }
-
-  const social = [
-    { name: 'Twitter', href: 'https://twitter.com/techblog', icon: Twitter },
-    { name: 'Facebook', href: 'https://facebook.com/techblog', icon: Facebook },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/techblog', icon: Linkedin },
-    { name: 'GitHub', href: 'https://github.com/techblog', icon: Github },
-    { name: 'RSS', href: '/feed.xml', icon: Rss },
-  ]
 
   return (
     <footer className="bg-slate-900 border-t border-slate-800">
@@ -43,36 +13,35 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                TB
+                {SITE_CONTENT.site.name.substring(0, 2).toUpperCase()}
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                TechBlog
+                {SITE_CONTENT.site.name}
               </span>
             </Link>
             <p className="text-slate-400 mb-4 leading-relaxed">
-              Modern Development Insights & Best Practices. Discover cutting-edge web development insights, 
-              programming tutorials, and industry best practices.
+              {SITE_CONTENT.footer.description}
             </p>
             
             {/* Contact Info */}
             <div className="space-y-2 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <a href="mailto:contact@techblog.com" className="hover:text-blue-400 transition-colors">
-                  contact@techblog.com
+                <a href={`mailto:${SITE_CONTENT.contact.email}`} className="hover:text-blue-400 transition-colors">
+                  {SITE_CONTENT.contact.email}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span>+1-555-0123</span>
+                <span>{SITE_CONTENT.contact.phone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
-                <span>San Francisco, CA</span>
+                <span>{SITE_CONTENT.contact.address}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-blue-400" />
-                <span>Mon-Fri 9AM-6PM PST</span>
+                <span>{SITE_CONTENT.contact.supportHours}</span>
               </div>
             </div>
           </div>
@@ -81,7 +50,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
-              {navigation.main.map((item) => (
+              {SITE_CONTENT.navigation.main.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
@@ -98,7 +67,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
-              {navigation.resources.map((item) => (
+              {SITE_CONTENT.navigation.resources.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
@@ -115,7 +84,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 mb-6">
-              {navigation.legal.map((item) => (
+              {SITE_CONTENT.navigation.legal.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
@@ -130,18 +99,22 @@ export default function Footer() {
             {/* Social Links */}
             <h3 className="text-white font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              {social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-slate-400 hover:text-blue-400 transition-colors duration-200"
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-5 w-5" />
-                </a>
-              ))}
+              {SITE_CONTENT.social.platforms.map((platform) => {
+                const IconComponent = getIconComponent(platform.name)
+                return (
+                  <a
+                    key={platform.name}
+                    href={platform.url}
+                    className="text-slate-400 hover:text-blue-400 transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={platform.description}
+                  >
+                    <span className="sr-only">{platform.name}</span>
+                    <IconComponent className="h-5 w-5" />
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -149,18 +122,18 @@ export default function Footer() {
         {/* Newsletter Signup */}
         <div className="mt-12 pt-8 border-t border-slate-800">
           <div className="max-w-md">
-            <h3 className="text-white font-semibold mb-2">Stay Updated</h3>
+            <h3 className="text-white font-semibold mb-2">{SITE_CONTENT.newsletter.title}</h3>
             <p className="text-slate-400 text-sm mb-4">
-              Get the latest articles and insights delivered to your inbox.
+              {SITE_CONTENT.newsletter.description}
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={SITE_CONTENT.newsletter.placeholder}
                 className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200">
-                Subscribe
+                {SITE_CONTENT.newsletter.button}
               </button>
             </div>
           </div>
@@ -170,16 +143,32 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-slate-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-400 text-sm">
-              © {currentYear} TechBlog. All rights reserved.
+              {SITE_CONTENT.footer.copyright.replace('2025', currentYear.toString())}
             </p>
             <div className="flex items-center gap-6 text-sm text-slate-400">
-              <span>Made with ❤️ using Next.js</span>
+              <span>{SITE_CONTENT.footer.madeWith}</span>
               <span>•</span>
-              <span>Powered by Tailwind CSS</span>
+              <span>{SITE_CONTENT.footer.poweredBy}</span>
             </div>
           </div>
         </div>
       </div>
     </footer>
   )
+}
+
+// Helper function to get icon components
+function getIconComponent(platformName: string) {
+  switch (platformName.toLowerCase()) {
+    case 'twitter':
+      return Twitter
+    case 'facebook':
+      return Facebook
+    case 'linkedin':
+      return Linkedin
+    case 'github':
+      return Github
+    default:
+      return Twitter
+  }
 }

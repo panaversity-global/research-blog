@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { SITE_CONTENT } from '@/lib/content'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,60 +17,39 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://techblog.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || `https://${SITE_CONTENT.site.domain}`),
   title: {
-    default: 'TechBlog - Modern Development Insights & Best Practices',
-    template: '%s | TechBlog'
+    default: `${SITE_CONTENT.site.name} - ${SITE_CONTENT.site.tagline}`,
+    template: `%s | ${SITE_CONTENT.site.name}`
   },
-  description: 'Discover cutting-edge web development insights, programming tutorials, and industry best practices. Stay ahead with our expert analysis and practical guides.',
-  keywords: [
-    'web development',
-    'programming',
-    'software engineering',
-    'frontend development',
-    'backend development',
-    'full-stack development',
-    'JavaScript',
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Node.js',
-    'Python',
-    'database design',
-    'API development',
-    'cloud computing',
-    'devops',
-    'software architecture',
-    'coding best practices',
-    'technology trends',
-    'developer tools'
-  ],
+  description: SITE_CONTENT.site.description,
+  keywords: SITE_CONTENT.seo.keywords,
   authors: [
-    { name: 'TechBlog Team', url: 'https://techblog.com' }
+    { name: `${SITE_CONTENT.site.name} Team`, url: `https://${SITE_CONTENT.site.domain}` }
   ],
-  creator: 'TechBlog Team',
-  publisher: 'TechBlog',
+  creator: `${SITE_CONTENT.site.name} Team`,
+  publisher: SITE_CONTENT.site.name,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  category: 'technology',
+  category: SITE_CONTENT.business.industry.toLowerCase(),
   
   // Open Graph
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://techblog.com',
-    siteName: 'TechBlog',
-    title: 'TechBlog - Modern Development Insights & Best Practices',
-    description: 'Discover cutting-edge web development insights, programming tutorials, and industry best practices. Stay ahead with our expert analysis and practical guides.',
+    url: `https://${SITE_CONTENT.site.domain}`,
+    siteName: SITE_CONTENT.site.name,
+    title: `${SITE_CONTENT.site.name} - ${SITE_CONTENT.site.tagline}`,
+    description: SITE_CONTENT.site.description,
     images: [
       {
-        url: '/api/og?title=TechBlog%20-%20Modern%20Development%20Insights',
+        url: `/api/og?title=${encodeURIComponent(`${SITE_CONTENT.site.name} - ${SITE_CONTENT.site.tagline}`)}`,
         width: 1200,
         height: 630,
-        alt: 'TechBlog - Modern Development Insights & Best Practices',
+        alt: `${SITE_CONTENT.site.name} - ${SITE_CONTENT.site.tagline}`,
         type: 'image/png'
       }
     ]
@@ -78,11 +58,11 @@ export const metadata: Metadata = {
   // Twitter Cards
   twitter: {
     card: 'summary_large_image',
-    site: '@techblog',
-    creator: '@techblog',
-    title: 'TechBlog - Modern Development Insights & Best Practices',
-    description: 'Discover cutting-edge web development insights, programming tutorials, and industry best practices.',
-    images: ['/api/og?title=TechBlog%20-%20Modern%20Development%20Insights']
+    site: SITE_CONTENT.contact.social.twitter.handle,
+    creator: SITE_CONTENT.contact.social.twitter.handle,
+    title: `${SITE_CONTENT.site.name} - ${SITE_CONTENT.site.tagline}`,
+    description: SITE_CONTENT.site.description,
+    images: [`/api/og?title=${encodeURIComponent(`${SITE_CONTENT.site.name} - ${SITE_CONTENT.site.tagline}`)}`]
   },
   
   // Additional metadata
@@ -104,38 +84,38 @@ export const metadata: Metadata = {
     'msvalidate.01': 'your-bing-verification-code',
     
     // Social Media
-    'twitter:site': '@techblog',
-    'twitter:creator': '@techblog',
+    'twitter:site': SITE_CONTENT.contact.social.twitter.handle,
+    'twitter:creator': SITE_CONTENT.contact.social.twitter.handle,
     
     // Additional Open Graph
-    'og:email': 'contact@techblog.com',
-    'og:phone_number': '+1-555-0123',
-    'og:fax_number': '+1-555-0124',
+    'og:email': SITE_CONTENT.contact.email,
+    'og:phone_number': SITE_CONTENT.contact.phone,
+    'og:fax_number': SITE_CONTENT.contact.fax,
     'og:locale:alternate': ['es_ES', 'fr_FR', 'de_DE'],
     
     // Article specific
-    'article:publisher': 'https://www.facebook.com/techblog',
-    'article:author': 'https://www.facebook.com/techblog',
+    'article:publisher': SITE_CONTENT.contact.social.facebook.url,
+    'article:author': SITE_CONTENT.contact.social.facebook.url,
     
     // Business
-    'business:contact_data:street_address': '123 Tech Street',
-    'business:contact_data:locality': 'San Francisco',
-    'business:contact_data:region': 'CA',
-    'business:contact_data:postal_code': '94105',
-    'business:contact_data:country_name': 'United States',
-    'business:contact_data:phone_number': '+1-555-0123',
-    'business:contact_data:email': 'contact@techblog.com',
-    'business:contact_data:website': 'https://techblog.com',
+    'business:contact_data:street_address': SITE_CONTENT.business.address.street,
+    'business:contact_data:locality': SITE_CONTENT.business.address.city,
+    'business:contact_data:region': SITE_CONTENT.business.address.state,
+    'business:contact_data:postal_code': SITE_CONTENT.business.address.zip,
+    'business:contact_data:country_name': SITE_CONTENT.business.address.country,
+    'business:contact_data:phone_number': SITE_CONTENT.contact.phone,
+    'business:contact_data:email': SITE_CONTENT.contact.email,
+    'business:contact_data:website': `https://${SITE_CONTENT.site.domain}`,
     
     // Place
-    'place:location:latitude': '37.7749',
-    'place:location:longitude': '-122.4194',
+    'place:location:latitude': SITE_CONTENT.business.address.coordinates.latitude,
+    'place:location:longitude': SITE_CONTENT.business.address.coordinates.longitude,
     
     // Book
-    'book:author': 'TechBlog Team',
+    'book:author': `${SITE_CONTENT.site.name} Team`,
     'book:isbn': '978-0-123456-78-9',
     'book:release_date': '2024-01-01',
-    'book:tag': ['technology', 'programming', 'web development']
+    'book:tag': SITE_CONTENT.seo.categories
   },
   
   // Robots
@@ -187,19 +167,19 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'TechBlog',
+    title: SITE_CONTENT.site.name,
   },
   
 
   
   // Alternates
   alternates: {
-    canonical: 'https://techblog.com',
+    canonical: `https://${SITE_CONTENT.site.domain}`,
     languages: {
-      'en-US': 'https://techblog.com',
-      'es-ES': 'https://techblog.com/es',
-      'fr-FR': 'https://techblog.com/fr',
-      'de-DE': 'https://techblog.com/de',
+      'en-US': `https://${SITE_CONTENT.site.domain}`,
+      'es-ES': `https://${SITE_CONTENT.site.domain}/es`,
+      'fr-FR': `https://${SITE_CONTENT.site.domain}/fr`,
+      'de-DE': `https://${SITE_CONTENT.site.domain}/de`,
     },
   },
 }
@@ -242,30 +222,30 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "TechBlog",
-              "url": "https://techblog.com",
-              "logo": "https://techblog.com/logo.png",
-              "description": "Modern Development Insights & Best Practices",
-              "foundingDate": "2024",
+              "name": SITE_CONTENT.site.name,
+              "url": `https://${SITE_CONTENT.site.domain}`,
+              "logo": `https://${SITE_CONTENT.site.domain}/logo.png`,
+              "description": SITE_CONTENT.site.description,
+              "foundingDate": SITE_CONTENT.site.founded,
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Tech Street",
-                "addressLocality": "San Francisco",
-                "addressRegion": "CA",
-                "postalCode": "94105",
-                "addressCountry": "US"
+                "streetAddress": SITE_CONTENT.business.address.street,
+                "addressLocality": SITE_CONTENT.business.address.city,
+                "addressRegion": SITE_CONTENT.business.address.state,
+                "postalCode": SITE_CONTENT.business.address.zip,
+                "addressCountry": SITE_CONTENT.business.address.countryCode
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+1-555-0123",
+                "telephone": SITE_CONTENT.contact.phone,
                 "contactType": "customer service",
-                "email": "contact@techblog.com"
+                "email": SITE_CONTENT.contact.email
               },
               "sameAs": [
-                "https://twitter.com/techblog",
-                "https://facebook.com/techblog",
-                "https://linkedin.com/company/techblog",
-                "https://github.com/techblog"
+                SITE_CONTENT.contact.social.twitter.url,
+                SITE_CONTENT.contact.social.facebook.url,
+                SITE_CONTENT.contact.social.linkedin.url,
+                SITE_CONTENT.contact.social.github.url
               ]
             })
           }}

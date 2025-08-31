@@ -1,31 +1,11 @@
 import type { Metadata } from 'next'
+import { SITE_CONTENT } from './content'
 
-// Base SEO configuration
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://techblog.com'
-export const SITE_NAME = 'TechBlog'
-export const SITE_DESCRIPTION = 'Modern Development Insights & Best Practices'
-export const SITE_KEYWORDS = [
-  'web development',
-  'programming',
-  'software engineering',
-  'frontend development',
-  'backend development',
-  'full-stack development',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Node.js',
-  'Python',
-  'database design',
-  'API development',
-  'cloud computing',
-  'devops',
-  'software architecture',
-  'coding best practices',
-  'technology trends',
-  'developer tools'
-]
+// Base SEO configuration - now centralized
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || `https://${SITE_CONTENT.site.domain}`
+export const SITE_NAME = SITE_CONTENT.site.name
+export const SITE_DESCRIPTION = SITE_CONTENT.site.description
+export const SITE_KEYWORDS = SITE_CONTENT.seo.keywords
 
 // Default metadata for the site
 export const defaultMetadata: Metadata = {
