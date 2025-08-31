@@ -1,6 +1,6 @@
 ---
 title: aaaa
-date: '323213'
+date: '2024-01-15'
 ai_readable: true
 ---
 # Prompt Engineering Tutorial for Beginners: A Comprehensive Guide to Effective AI Communication

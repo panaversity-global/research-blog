@@ -10,6 +10,7 @@ export interface PostFrontmatter {
   summary?: string
   canonical?: string
   ai_readable?: boolean
+  image?: string
 }
 
 export interface PostData {
@@ -97,6 +98,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     summary: fm.summary ? String(fm.summary) : undefined,
     canonical: fm.canonical ? String(fm.canonical) : undefined,
     ai_readable: Boolean(fm.ai_readable ?? true),
+    image: fm.image ? String(fm.image) : undefined,
   }
   const content = parsed.content
 

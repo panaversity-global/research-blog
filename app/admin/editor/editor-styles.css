@@ -1,0 +1,169 @@
+/* Enhanced custom styles for the markdown editor to match the beautiful blog theme */
+
+/* Editor container */
+.rmel-editor {
+  background: linear-gradient(135deg, hsl(var(--muted)/0.8) 0%, hsl(var(--muted)/0.6) 100%) !important;
+  border: 1px solid hsl(var(--border)/0.5) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px hsl(var(--black)/0.1), 0 2px 4px -1px hsl(var(--black)/0.06) !important;
+  overflow: hidden !important;
+}
+
+/* Toolbar */
+.rmel-editor .rmel-toolbar {
+  background: linear-gradient(135deg, hsl(var(--muted)/0.9) 0%, hsl(var(--muted)/0.7) 100%) !important;
+  border-bottom: 1px solid hsl(var(--border)/0.3) !important;
+  padding: 0.75rem !important;
+}
+
+/* Toolbar buttons */
+.rmel-editor .rmel-toolbar button {
+  color: hsl(var(--muted-foreground)) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0.5rem !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease-in-out !important;
+  margin: 0 0.125rem !important;
+}
+
+.rmel-editor .rmel-toolbar button:hover {
+  background: linear-gradient(135deg, hsl(var(--accent)/0.8) 0%, hsl(var(--accent)/0.6) 100%) !important;
+  color: hsl(var(--accent-foreground)) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 4px hsl(var(--accent)/0.2) !important;
+}
+
+.rmel-editor .rmel-toolbar button.active {
+  background: linear-gradient(135deg, hsl(var(--primary)/0.8) 0%, hsl(var(--primary)/0.6) 100%) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  box-shadow: 0 2px 8px hsl(var(--primary)/0.3) !important;
+}
+
+/* Editor areas */
+.rmel-editor .rmel-editor-left,
+.rmel-editor .rmel-editor-right {
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  padding: 1rem !important;
+}
+
+/* Markdown input area */
+.rmel-editor .rmel-editor-left textarea {
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: none !important;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Fira Code', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  padding: 0.5rem !important;
+  border-radius: 0.5rem !important;
+}
+
+.rmel-editor .rmel-editor-left textarea:focus {
+  outline: none !important;
+  background: hsl(var(--background)) !important;
+  box-shadow: inset 0 0 0 2px hsl(var(--primary)/0.2) !important;
+}
+
+/* Preview area */
+.rmel-editor .rmel-editor-right {
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  padding: 1.5rem !important;
+  border-left: 1px solid hsl(var(--border)/0.3) !important;
+}
+
+/* Custom scrollbars */
+.rmel-editor ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.rmel-editor ::-webkit-scrollbar-track {
+  background: hsl(var(--muted)/0.3);
+  border-radius: 4px;
+}
+
+.rmel-editor ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(var(--muted-foreground)/0.6) 0%, hsl(var(--muted-foreground)/0.4) 100%);
+  border-radius: 4px;
+  border: 1px solid hsl(var(--muted)/0.2);
+}
+
+.rmel-editor ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, hsl(var(--foreground)/0.7) 0%, hsl(var(--foreground)/0.5) 100%);
+}
+
+/* Enhanced focus states */
+.rmel-editor .rmel-editor-left textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px hsl(var(--ring)/0.2) !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .rmel-editor {
+    font-size: 14px !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .rmel-editor .rmel-toolbar {
+    padding: 0.5rem !important;
+  }
+  
+  .rmel-editor .rmel-toolbar button {
+    padding: 0.375rem !important;
+    margin: 0 0.0625rem !important;
+  }
+  
+  .rmel-editor .rmel-editor-left,
+  .rmel-editor .rmel-editor-right {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .rmel-editor {
+    background: linear-gradient(135deg, hsl(var(--muted)/0.9) 0%, hsl(var(--muted)/0.7) 100%) !important;
+  }
+  
+  .rmel-editor .rmel-toolbar {
+    background: linear-gradient(135deg, hsl(var(--muted)/0.95) 0%, hsl(var(--muted)/0.8) 100%) !important;
+  }
+}
+
+/* Animation for editor loading */
+.rmel-editor {
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced button states */
+.rmel-editor .rmel-toolbar button:active {
+  transform: translateY(0) !important;
+  transition: transform 0.1s ease-in-out !important;
+}
+
+/* Custom selection colors */
+.rmel-editor ::selection {
+  background: hsl(var(--primary)/0.2) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.rmel-editor ::-moz-selection {
+  background: hsl(var(--primary)/0.2) !important;
+  color: hsl(var(--foreground)) !important;
+}

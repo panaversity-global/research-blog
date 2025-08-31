@@ -1,0 +1,24 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+Disallow: *.json
+Disallow: *.md
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Host
+Host: http://localhost:3000
+
+# Sitemaps
+Sitemap: https://techblog.com/sitemap.xml
+Sitemap: https://techblog.com/feed.xml

@@ -1,6 +1,6 @@
 ---
 title: mcp
-date: 1947-10-254
+date: '2024-01-15'
 author: aa
 ai_readable: true
 ---

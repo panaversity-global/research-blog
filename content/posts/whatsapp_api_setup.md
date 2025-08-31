@@ -1,3 +1,10 @@
+---
+title: WhatsApp Business Cloud API Setup Guide
+date: '2024-01-15'
+author: TechBlog Team
+tags: ['api', 'whatsapp', 'business', 'integration']
+---
+
 # WhatsApp Business Cloud API Setup Guide
 
 ## 1. Prerequisites

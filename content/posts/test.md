@@ -1,6 +1,6 @@
 ---
 title: test
-date: '1999-02-50'
+date: '2024-01-15'
 author: aa
 tags:
   - aaa
