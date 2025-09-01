@@ -149,7 +149,7 @@ export default async function PostPage({ params }: PageProps) {
   const { frontmatter, content } = post
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 max-w-4xl">
         {/* Breadcrumbs */}
         <nav className="flex mb-6" aria-label="Breadcrumb">
@@ -157,23 +157,23 @@ export default async function PostPage({ params }: PageProps) {
             <li>
               <Link
                 href="/"
-                className="text-slate-400 hover:text-white transition-colors duration-200 flex items-center"
+                className="text-gray-500 hover:text-gray-900 transition-colors duration-200 flex items-center"
               >
                 <span className="text-sm">Home</span>
               </Link>
             </li>
             <li className="flex items-center">
-              <span className="text-slate-500 mx-2">/</span>
+              <span className="text-gray-400 mx-2">/</span>
               <Link
                 href="/blog"
-                className="text-slate-400 hover:text-white transition-colors duration-200 text-sm"
+                className="text-gray-500 hover:text-gray-900 transition-colors duration-200 text-sm"
               >
                 Blog
               </Link>
             </li>
             <li className="flex items-center">
-              <span className="text-slate-500 mx-2">/</span>
-              <span className="text-slate-300 font-medium text-sm" aria-current="page">
+              <span className="text-gray-400 mx-2">/</span>
+              <span className="text-gray-700 font-medium text-sm" aria-current="page">
                 {frontmatter.title}
               </span>
             </li>
@@ -181,7 +181,7 @@ export default async function PostPage({ params }: PageProps) {
         </nav>
         
         {/* Back Button */}
-        <Button asChild variant="ghost" className="mb-8 text-slate-400 hover:text-white hover:bg-slate-800/50">
+        <Button asChild variant="ghost" className="mb-8 text-gray-600 hover:text-gray-900 hover:bg-gray-100">
           <Link href="/">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
@@ -191,12 +191,12 @@ export default async function PostPage({ params }: PageProps) {
         {/* Article Header */}
         <article className="mb-12">
           <header className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               {frontmatter.title}
             </h1>
             
             {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-4 text-slate-400 mb-6">
+            <div className="flex flex-wrap items-center gap-4 text-gray-500 mb-6">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
                 <span className="text-sm">{frontmatter.author}</span>
@@ -217,7 +217,7 @@ export default async function PostPage({ params }: PageProps) {
             {frontmatter.tags && frontmatter.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {frontmatter.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="bg-slate-700/50 text-slate-300 hover:bg-slate-700/70">
+                  <Badge key={tag} variant="secondary" className="bg-gray-100 text-gray-700 hover:bg-gray-200">
                     {tag}
                   </Badge>
                 ))}
@@ -226,33 +226,33 @@ export default async function PostPage({ params }: PageProps) {
 
             {/* Summary */}
             {frontmatter.summary && (
-              <p className="text-lg text-slate-300 leading-relaxed border-l-4 border-blue-500 pl-6 py-2 bg-slate-800/30 rounded-r-lg">
+              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-blue-500 pl-6 py-2 bg-blue-50 rounded-r-lg">
                 {frontmatter.summary}
               </p>
             )}
           </header>
 
           {/* Article Content */}
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-slate-300 prose-strong:text-white prose-code:text-blue-400 prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700">
+          <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-strong:text-gray-900 prose-code:text-red-600 prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-200">
             <Markdown content={content} />
           </div>
         </article>
 
         {/* Article Footer */}
-        <footer className="border-t border-slate-700/50 pt-8">
+        <footer className="border-t border-gray-200 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div className="flex items-center gap-4">
               <ShareButton title={frontmatter.title} summary={frontmatter.summary} />
             </div>
             
-            <div className="flex items-center gap-4 text-sm text-slate-400">
+            <div className="flex items-center gap-4 text-sm text-gray-500">
               <time dateTime={frontmatter.date}>Published on {frontmatter.date}</time>
               {frontmatter.canonical && typeof frontmatter.canonical === 'string' && (
                 <a 
                   href={frontmatter.canonical} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 underline"
+                  className="text-blue-600 hover:text-blue-700 underline"
                 >
                   View Original
                 </a>
@@ -263,13 +263,13 @@ export default async function PostPage({ params }: PageProps) {
 
         {/* Navigation Links */}
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
-          <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+          <Link href="/" className="text-blue-600 hover:text-blue-700 transition-colors duration-200">
             ← Back to Home
           </Link>
           <div className="flex gap-4 ml-auto">
             <Link 
               href={`/posts/${slug}/md`} 
-              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 hover:bg-slate-800/50 px-3 py-2 rounded-lg"
+              className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors duration-200 hover:bg-gray-100 px-3 py-2 rounded-lg"
               title="View raw markdown content"
             >
               <FileText className="h-4 w-4" />
@@ -277,7 +277,7 @@ export default async function PostPage({ params }: PageProps) {
             </Link>
             <Link 
               href={`/posts/${slug}/json`} 
-              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 hover:bg-slate-200/50 px-3 py-2 rounded-lg"
+              className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors duration-200 hover:bg-gray-100 px-3 py-2 rounded-lg"
               title="View JSON metadata"
             >
               <FileText className="h-4 w-4" />
@@ -289,6 +289,7 @@ export default async function PostPage({ params }: PageProps) {
     </div>
   )
 }
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,

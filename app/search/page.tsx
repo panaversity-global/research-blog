@@ -41,14 +41,14 @@ export const viewport: Viewport = {
 
 export default function SearchPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-6xl">
         {/* Page Header */}
         <header className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Search <span className="text-gradient">Articles</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Find exactly what you're looking for in our extensive collection of web development articles, 
             programming tutorials, and technology insights.
           </p>
@@ -58,16 +58,16 @@ export default function SearchPage() {
         <Suspense fallback={
           <div className="space-y-8">
             <div className="card animate-pulse">
-              <div className="h-12 bg-slate-700 rounded mb-4"></div>
-              <div className="h-8 bg-slate-700 rounded mb-2"></div>
-              <div className="h-8 bg-slate-700 rounded w-3/4"></div>
+              <div className="h-12 bg-gray-300 rounded mb-4"></div>
+              <div className="h-8 bg-gray-300 rounded mb-2"></div>
+              <div className="h-8 bg-gray-300 rounded w-3/4"></div>
             </div>
             {[...Array(5)].map((_, i) => (
               <div key={i} className="card animate-pulse">
-                <div className="h-8 bg-slate-700 rounded mb-4"></div>
-                <div className="h-4 bg-slate-700 rounded mb-2"></div>
-                <div className="h-4 bg-slate-700 rounded mb-2"></div>
-                <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                <div className="h-8 bg-gray-300 rounded mb-4"></div>
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded w-3/4"></div>
               </div>
             ))}
           </div>

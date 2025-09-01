@@ -1,7 +1,9 @@
 ---
-title: aa
-date: '2025-08-29'
-author: aa
+title: Roas
+date: '2025-09-01'
+author: Zia Khan
+tags:
+  - panaversity
 ai_readable: true
 ---
 ## 🚀 Introducing RecursiveAgenticOS (RAOS): The Self-Managing OS for AI Agents

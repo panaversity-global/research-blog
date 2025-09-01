@@ -95,7 +95,7 @@ export default function ContactForm() {
   }
 
   const getInputClassName = (fieldName: string) => {
-    const baseClasses = "bg-slate-800/50 border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+    const baseClasses = "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
     return errors[fieldName] 
       ? `${baseClasses} border-red-500 focus:ring-red-500` 
       : baseClasses
@@ -105,28 +105,28 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Status Messages */}
       {submitStatus === 'success' && (
-        <div className="flex items-center gap-3 p-4 bg-green-600/20 border border-green-500/30 rounded-lg">
-          <CheckCircle className="h-5 w-5 text-green-400" />
+        <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <CheckCircle className="h-5 w-5 text-green-600" />
           <div>
-            <p className="text-green-400 font-medium">Message sent successfully!</p>
-            <p className="text-green-300 text-sm">We'll get back to you within 24 hours.</p>
+            <p className="text-green-800 font-medium">Message sent successfully!</p>
+            <p className="text-green-700 text-sm">We'll get back to you within 24 hours.</p>
           </div>
         </div>
       )}
       
       {submitStatus === 'error' && (
-        <div className="flex items-center gap-3 p-4 bg-red-600/20 border border-red-500/30 rounded-lg">
-          <AlertCircle className="h-5 w-5 text-red-400" />
+        <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <AlertCircle className="h-5 w-5 text-red-600" />
           <div>
-            <p className="text-red-400 font-medium">Failed to send message</p>
-            <p className="text-red-300 text-sm">Please try again or contact us directly via email.</p>
+            <p className="text-red-800 font-medium">Failed to send message</p>
+            <p className="text-red-700 text-sm">Please try again or contact us directly via email.</p>
           </div>
         </div>
       )}
 
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
           Full Name *
         </label>
         <Input
@@ -140,7 +140,7 @@ export default function ContactForm() {
           disabled={isSubmitting}
         />
         {errors.name && (
-          <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+          <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
             <AlertCircle className="h-4 w-4" />
             {errors.name}
           </p>
@@ -149,7 +149,7 @@ export default function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
           Email Address *
         </label>
         <Input
@@ -163,7 +163,7 @@ export default function ContactForm() {
           disabled={isSubmitting}
         />
         {errors.email && (
-          <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+          <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
             <AlertCircle className="h-4 w-4" />
             {errors.email}
           </p>
@@ -172,7 +172,7 @@ export default function ContactForm() {
 
       {/* Subject Field */}
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-white mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
           Subject *
         </label>
         <Input
@@ -186,7 +186,7 @@ export default function ContactForm() {
           disabled={isSubmitting}
         />
         {errors.subject && (
-          <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+          <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
             <AlertCircle className="h-4 w-4" />
             {errors.subject}
           </p>
@@ -195,7 +195,7 @@ export default function ContactForm() {
 
       {/* Message Field */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
           Message *
         </label>
         <Textarea
@@ -208,13 +208,13 @@ export default function ContactForm() {
           disabled={isSubmitting}
         />
         {errors.message && (
-          <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+          <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
             <AlertCircle className="h-4 w-4" />
             {errors.message}
           </p>
         )}
         <div className="flex justify-between items-center mt-2">
-          <p className="text-slate-400 text-sm">
+          <p className="text-gray-500 text-sm">
             Minimum 10 characters required
           </p>
           <Badge variant="secondary" className="text-xs">
@@ -243,9 +243,9 @@ export default function ContactForm() {
       </Button>
 
       {/* Privacy Notice */}
-      <p className="text-slate-400 text-sm text-center">
+      <p className="text-gray-500 text-sm text-center">
         By submitting this form, you agree to our{' '}
-        <a href="/privacy" className="text-blue-400 hover:text-blue-300 underline">
+        <a href="/privacy" className="text-blue-600 hover:text-blue-700 underline">
           Privacy Policy
         </a>
         . We'll never share your personal information with third parties.

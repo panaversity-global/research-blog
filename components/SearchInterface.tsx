@@ -173,13 +173,13 @@ export default function SearchInterface() {
         <CardContent className="p-6">
           <div className="flex flex-col gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
               <Input
                 type="text"
                 placeholder="Search articles, tags, authors, or content..."
                 value={query}
                 onChange={(e) => handleQueryChange(e.target.value)}
-                className="pl-10 bg-slate-800/50 border-slate-600 text-white placeholder-slate-400"
+                className="pl-10 bg-white border-gray-300 text-gray-900 placeholder-gray-500"
               />
             </div>
             
@@ -187,7 +187,7 @@ export default function SearchInterface() {
               <Button
                 variant="outline"
                 onClick={() => setShowFilters(!showFilters)}
-                className="border-slate-600 text-slate-300 hover:bg-slate-800/50"
+                className="border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 <Filter className="mr-2 h-4 w-4" />
                 {showFilters ? 'Hide' : 'Show'} Filters
@@ -197,7 +197,7 @@ export default function SearchInterface() {
                 <Button
                   variant="ghost"
                   onClick={clearFilters}
-                  className="text-slate-400 hover:text-white hover:bg-slate-800/50"
+                  className="text-gray-500 hover:text-gray-900 hover:bg-gray-100"
                 >
                   <X className="mr-2 h-4 w-4" />
                   Clear All
@@ -207,13 +207,13 @@ export default function SearchInterface() {
 
             {/* Filters */}
             {showFilters && (
-              <div className="grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-700">
+              <div className="grid md:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Filter by Tag</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Tag</label>
                   <select
                     value={tag}
                     onChange={(e) => handleTagChange(e.target.value)}
-                    className="w-full bg-slate-800/50 border border-slate-600 text-white rounded-lg px-3 py-2"
+                    className="w-full bg-white border border-gray-300 text-gray-900 rounded-lg px-3 py-2"
                   >
                     <option value="">All Tags</option>
                     {availableTags.map(tagOption => (
@@ -223,11 +223,11 @@ export default function SearchInterface() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Filter by Author</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Author</label>
                   <select
                     value={author}
                     onChange={(e) => handleAuthorChange(e.target.value)}
-                    className="w-full bg-slate-800/50 border border-slate-600 text-white rounded-lg px-3 py-2"
+                    className="w-full bg-white border border-gray-300 text-gray-900 rounded-lg px-3 py-2"
                   >
                     <option value="">All Authors</option>
                     {availableAuthors.map(authorOption => (
@@ -247,10 +247,10 @@ export default function SearchInterface() {
           {[...Array(5)].map((_, i) => (
             <Card key={i} className="card animate-pulse">
               <CardContent className="p-6">
-                <div className="h-6 bg-slate-700 rounded mb-4"></div>
-                <div className="h-4 bg-slate-700 rounded mb-2"></div>
-                <div className="h-4 bg-slate-700 rounded mb-2"></div>
-                <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                <div className="h-6 bg-gray-300 rounded mb-4"></div>
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded w-3/4"></div>
               </CardContent>
             </Card>
           ))}
@@ -259,11 +259,11 @@ export default function SearchInterface() {
         <>
           {/* Results Summary */}
           <div className="flex items-center justify-between">
-            <p className="text-slate-300">
+            <p className="text-gray-600">
               {total} result{total !== 1 ? 's' : ''} found
             </p>
             {totalPages > 1 && (
-              <p className="text-slate-400 text-sm">
+              <p className="text-gray-500 text-sm">
                 Page {currentPage} of {totalPages}
               </p>
             )}
@@ -278,7 +278,7 @@ export default function SearchInterface() {
                     {/* Post Image */}
                     {post.image && (
                       <div className="lg:w-1/3">
-                        <div className="aspect-video bg-slate-700 rounded-lg overflow-hidden">
+                        <div className="aspect-video bg-gray-300 rounded-lg overflow-hidden">
                           <img
                             src={post.image}
                             alt={post.title}
@@ -290,14 +290,14 @@ export default function SearchInterface() {
                     
                     {/* Post Content */}
                     <div className="lg:flex-1">
-                      <h2 className="text-2xl font-bold text-white mb-3 hover:text-blue-400 transition-colors duration-200">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors duration-200">
                         <Link href={`/posts/${post.slug}`}>
                           {post.title}
                         </Link>
                       </h2>
                       
                       {/* Meta Information */}
-                      <div className="flex flex-wrap items-center gap-4 text-slate-400 text-sm mb-4">
+                      <div className="flex flex-wrap items-center gap-4 text-gray-500 text-sm mb-4">
                         <div className="flex items-center gap-2">
                           <User className="h-4 w-4" />
                           <span>{post.author}</span>
@@ -322,7 +322,7 @@ export default function SearchInterface() {
                       {post.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-4">
                           {post.tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="bg-slate-700/50 text-slate-300 hover:bg-slate-700/70">
+                            <Badge key={tag} variant="secondary" className="bg-gray-100 text-gray-700 hover:bg-gray-200">
                               {tag}
                             </Badge>
                           ))}
@@ -331,13 +331,13 @@ export default function SearchInterface() {
                       
                       {/* Summary */}
                       {post.summary && (
-                        <p className="text-slate-300 leading-relaxed mb-4 line-clamp-3">
+                        <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
                           {post.summary}
                         </p>
                       )}
                       
                       {/* Excerpt */}
-                      <p className="text-slate-400 text-sm mb-4 line-clamp-2">
+                      <p className="text-gray-500 text-sm mb-4 line-clamp-2">
                         {post.excerpt}
                       </p>
                       
@@ -362,7 +362,7 @@ export default function SearchInterface() {
                 variant="outline"
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={!currentPage || currentPage <= 1}
-                className="border-slate-600 text-slate-300 hover:bg-slate-800/50"
+                className="border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Previous
@@ -378,7 +378,7 @@ export default function SearchInterface() {
                       key={pageNum}
                       variant={pageNum === currentPage ? "default" : "outline"}
                       onClick={() => goToPage(pageNum)}
-                      className={pageNum === currentPage ? "btn-primary" : "border-slate-600 text-slate-300 hover:bg-slate-800/50"}
+                      className={pageNum === currentPage ? "btn-primary" : "border-gray-300 text-gray-700 hover:bg-gray-50"}
                     >
                       {pageNum}
                     </Button>
@@ -390,7 +390,7 @@ export default function SearchInterface() {
                 variant="outline"
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={!currentPage || currentPage >= totalPages}
-                className="border-slate-600 text-slate-300 hover:bg-slate-800/50"
+                className="border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 Next
                 <ChevronRight className="ml-2 h-4 w-4" />
@@ -401,12 +401,12 @@ export default function SearchInterface() {
       ) : (query || tag || author) ? (
         <Card className="card">
           <CardContent className="p-12 text-center">
-            <Search className="h-16 w-16 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">No results found</h3>
-            <p className="text-slate-400 mb-6">
+            <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No results found</h3>
+            <p className="text-gray-600 mb-6">
               Try adjusting your search terms or filters to find what you're looking for.
             </p>
-            <Button onClick={clearFilters} variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800/50">
+            <Button onClick={clearFilters} variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
               Clear Search
             </Button>
           </CardContent>
@@ -414,9 +414,9 @@ export default function SearchInterface() {
       ) : (
         <Card className="card">
           <CardContent className="p-12 text-center">
-            <Search className="h-16 w-16 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">Start searching</h3>
-            <p className="text-slate-400">
+            <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Start searching</h3>
+            <p className="text-gray-600">
               Enter keywords, tags, or author names to find relevant articles.
             </p>
           </CardContent>

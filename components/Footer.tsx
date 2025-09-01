@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800">
+    <footer className="bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -15,32 +15,32 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
                 {SITE_CONTENT.site.name.substring(0, 2).toUpperCase()}
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {SITE_CONTENT.site.name}
               </span>
             </Link>
-            <p className="text-slate-400 mb-4 leading-relaxed">
+            <p className="text-gray-600 mb-4 leading-relaxed">
               {SITE_CONTENT.footer.description}
             </p>
             
             {/* Contact Info */}
-            <div className="space-y-2 text-sm text-slate-400">
+            <div className="space-y-2 text-sm text-gray-600">
               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-blue-400" />
-                <a href={`mailto:${SITE_CONTENT.contact.email}`} className="hover:text-blue-400 transition-colors">
+                <Mail className="h-4 w-4 text-blue-600" />
+                <a href={`mailto:${SITE_CONTENT.contact.email}`} className="hover:text-blue-600 transition-colors">
                   {SITE_CONTENT.contact.email}
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-blue-400" />
+                <Phone className="h-4 w-4 text-blue-600" />
                 <span>{SITE_CONTENT.contact.phone}</span>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-400" />
+                <MapPin className="h-4 w-4 text-blue-600" />
                 <span>{SITE_CONTENT.contact.address}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-blue-400" />
+                <Clock className="h-4 w-4 text-blue-600" />
                 <span>{SITE_CONTENT.contact.supportHours}</span>
               </div>
             </div>
@@ -48,13 +48,13 @@ export default function Footer() {
 
           {/* Main Navigation */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Navigation</h3>
+            <h3 className="text-gray-900 font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
               {SITE_CONTENT.navigation.main.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-slate-400 hover:text-blue-400 transition-colors duration-200 text-sm"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
                   >
                     {item.name}
                   </Link>
@@ -65,13 +65,13 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
+            <h3 className="text-gray-900 font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               {SITE_CONTENT.navigation.resources.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-slate-400 hover:text-blue-400 transition-colors duration-200 text-sm"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
                   >
                     {item.name}
                   </Link>
@@ -82,13 +82,13 @@ export default function Footer() {
 
           {/* Legal & Social */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
+            <h3 className="text-gray-900 font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 mb-6">
               {SITE_CONTENT.navigation.legal.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-slate-400 hover:text-blue-400 transition-colors duration-200 text-sm"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
                   >
                     {item.name}
                   </Link>
@@ -97,7 +97,7 @@ export default function Footer() {
             </ul>
 
             {/* Social Links */}
-            <h3 className="text-white font-semibold mb-4">Follow Us</h3>
+            <h3 className="text-gray-900 font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               {SITE_CONTENT.social.platforms.map((platform) => {
                 const IconComponent = getIconComponent(platform.name)
@@ -105,7 +105,7 @@ export default function Footer() {
                   <a
                     key={platform.name}
                     href={platform.url}
-                    className="text-slate-400 hover:text-blue-400 transition-colors duration-200"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
                     target="_blank"
                     rel="noopener noreferrer"
                     title={platform.description}
@@ -120,17 +120,17 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-slate-800">
+        <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="max-w-md">
-            <h3 className="text-white font-semibold mb-2">{SITE_CONTENT.newsletter.title}</h3>
-            <p className="text-slate-400 text-sm mb-4">
+            <h3 className="text-gray-900 font-semibold mb-2">{SITE_CONTENT.newsletter.title}</h3>
+            <p className="text-gray-600 text-sm mb-4">
               {SITE_CONTENT.newsletter.description}
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
                 placeholder={SITE_CONTENT.newsletter.placeholder}
-                className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200">
                 {SITE_CONTENT.newsletter.button}
@@ -140,12 +140,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800">
+        <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm">
+            <p className="text-gray-600 text-sm">
               {SITE_CONTENT.footer.copyright.replace('2025', currentYear.toString())}
             </p>
-            <div className="flex items-center gap-6 text-sm text-slate-400">
+            <div className="flex items-center gap-6 text-sm text-gray-600">
               <span>{SITE_CONTENT.footer.madeWith}</span>
               <span>•</span>
               <span>{SITE_CONTENT.footer.poweredBy}</span>

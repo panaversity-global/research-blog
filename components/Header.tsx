@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from './theme-toggle'
-import { Menu, X, Search, BookOpen, Users, Mail, Shield } from 'lucide-react'
+import { Menu, X, BookOpen, Users, Mail, Shield, PenTool } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -21,49 +20,44 @@ export default function Header() {
   }, [])
 
   const navigation = [
-    { name: 'Home', href: '/', icon: null },
     { name: 'Blog', href: '/blog', icon: BookOpen },
     { name: 'About', href: '/about', icon: Users },
     { name: 'Contact', href: '/contact', icon: Mail },
     { name: 'Privacy', href: '/privacy', icon: Shield },
-    { name: 'Admin', href: '/admin/editor', icon: Shield },
   ]
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/'
-    }
     return pathname.startsWith(href)
   }
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50' 
-        : 'bg-transparent'
+        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-lg' 
+        : 'bg-white/80 backdrop-blur-sm'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-200">
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl">
               TB
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-purple-300 transition-all duration-200">
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-purple-700 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300">
               TechBlog
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive(item.href)
-                    ? 'text-blue-400 bg-blue-500/10'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                    ? 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm'
+                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:border hover:border-gray-200'
                 }`}
               >
                 {item.icon && <item.icon className="h-4 w-4" />}
@@ -73,41 +67,25 @@ export default function Header() {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
-            {/* Admin Editor Button */}
+          <div className="flex items-center space-x-3">
+            {/* Write Post Button */}
             <Button
               asChild
-              variant="outline"
               size="sm"
-              className="border-slate-600 text-slate-300 hover:bg-slate-800/50"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0"
             >
               <Link href="/admin/editor">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Write Post
+                <PenTool className="mr-2 h-4 w-4" />
+                <span className="hidden sm:inline">Write Post</span>
+                <span className="sm:hidden">Write</span>
               </Link>
             </Button>
-
-            {/* Search Button */}
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className="text-slate-300 hover:text-white hover:bg-slate-800/50"
-            >
-              <Link href="/search">
-                <Search className="h-4 w-4" />
-                <span className="sr-only">Search</span>
-              </Link>
-            </Button>
-
-            {/* Theme Toggle */}
-            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="sm"
-              className="md:hidden text-slate-300 hover:text-white hover:bg-slate-800/50"
+              className="lg:hidden text-gray-700 hover:text-gray-900 hover:bg-gray-50 border border-gray-200 hover:border-gray-300 transition-all duration-300 rounded-xl px-3"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -117,16 +95,16 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-slate-800/95 backdrop-blur-md rounded-lg mt-2 border border-slate-700/50">
+          <div className="lg:hidden">
+            <div className="px-3 pt-3 pb-4 space-y-2 bg-white/95 backdrop-blur-md rounded-2xl mt-3 border border-gray-200/50 shadow-xl">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                     isActive(item.href)
-                      ? 'text-blue-400 bg-blue-500/10'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                      ? 'text-blue-600 bg-blue-50 border border-blue-200'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:border hover:border-gray-200'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -134,24 +112,14 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              
-              {/* Mobile Search Link */}
-              <Link
-                href="/search"
-                className="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Search className="h-5 w-5" />
-                Search
-              </Link>
 
-              {/* Mobile Admin Editor Link */}
+              {/* Mobile Write Post Link */}
               <Link
                 href="/admin/editor"
-                className="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all duration-200"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <BookOpen className="h-5 w-5" />
+                <PenTool className="h-5 w-5" />
                 Write Post
               </Link>
             </div>

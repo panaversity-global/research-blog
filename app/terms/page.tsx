@@ -46,17 +46,17 @@ export const viewport: Viewport = {
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <div id="top" className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-4xl">
         {/* Page Header */}
         <header className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Terms of Service
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Please read these terms and conditions carefully before using our website and services.
           </p>
-          <div className="mt-6 text-slate-400">
+          <div className="mt-6 text-gray-500">
             <p>Last updated: {new Date().toLocaleDateString('en-US', { 
               year: 'numeric', 
               month: 'long', 
@@ -66,14 +66,14 @@ export default function TermsPage() {
         </header>
 
         {/* Terms Content */}
-        <div className="prose prose-invert prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none">
           <div className="card">
             <div className="p-8 space-y-8">
               
               {/* Acceptance of Terms */}
               <section>
-                <h2 className="text-2xl font-bold text-white mb-4">1. Acceptance of Terms</h2>
-                <p className="text-slate-300 leading-relaxed">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
+                <p className="text-gray-600 leading-relaxed">
                   By accessing and using TechBlog ("the Website"), you accept and agree to be bound by the terms and provision of this agreement. 
                   If you do not agree to abide by the above, please do not use this service.
                 </p>
@@ -82,11 +82,11 @@ export default function TermsPage() {
               {/* Use License */}
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">2. Use License</h2>
-                <p className="text-slate-300 leading-relaxed mb-4">
+                <p className="text-gray-600 leading-relaxed mb-4">
                   Permission is granted to temporarily download one copy of the materials (information or software) on TechBlog for personal, 
                   non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
                 </p>
-                <ul className="list-disc list-inside text-slate-300 space-y-2 ml-4">
+                <ul className="list-disc list-inside text-gray-600 space-y-2 ml-4">
                   <li>Modify or copy the materials</li>
                   <li>Use the materials for any commercial purpose or for any public display</li>
                   <li>Attempt to reverse engineer any software contained on TechBlog</li>
@@ -98,7 +98,7 @@ export default function TermsPage() {
               {/* Disclaimer */}
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">3. Disclaimer</h2>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   The materials on TechBlog are provided on an 'as is' basis. TechBlog makes no warranties, expressed or implied, and hereby 
                   disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, 
                   fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
@@ -181,8 +181,8 @@ export default function TermsPage() {
                 <p className="text-slate-300 leading-relaxed">
                   If you have any questions about these Terms of Service, please contact us at:
                 </p>
-                <div className="mt-4 p-4 bg-slate-800/50 rounded-lg">
-                  <p className="text-slate-300">
+                <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+                  <p className="text-gray-700">
                     <strong>Email:</strong> legal@techblog.com<br />
                     <strong>Address:</strong> 123 Tech Street, San Francisco, CA 94105<br />
                     <strong>Phone:</strong> +1-555-0123
@@ -198,7 +198,7 @@ export default function TermsPage() {
         <div className="text-center mt-12">
           <a
             href="#top"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors duration-200"
           >
             Back to Top
           </a>
