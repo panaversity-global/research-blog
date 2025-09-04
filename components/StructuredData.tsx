@@ -52,10 +52,10 @@ export const createBlogPostSchema = (post: {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "TechBlog",
+    "name": "Panaversity",
     "logo": {
       "@type": "ImageObject",
-      "url": "/logo.png"
+      "url": "/logo.webp"
     }
   },
   "datePublished": post.date,
@@ -74,9 +74,9 @@ export const createBlogPostSchema = (post: {
 export const createOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "TechBlog",
-  "url": "https://techblog.com",
-  "logo": "https://techblog.com/logo.png",
+  "name": "Panaversity",
+  "url": "https://panaversity.org",
+  "logo": "https://panaversity.org/logo.webp",
   "description": "Modern Development Insights & Best Practices",
   "foundingDate": "2024",
   "address": {
@@ -91,29 +91,29 @@ export const createOrganizationSchema = () => ({
     "@type": "ContactPoint",
     "telephone": "+1-555-0123",
     "contactType": "customer service",
-    "email": "contact@techblog.com"
+    "email": "contact@panaversity.com"
   },
   "sameAs": [
-    "https://twitter.com/techblog",
-    "https://facebook.com/techblog",
-    "https://linkedin.com/company/techblog",
-    "https://github.com/techblog"
+    "https://twitter.com/panaversity",
+    "https://facebook.com/panaversity",
+    "https://linkedin.com/company/panaversity",
+    "https://github.com/panaversity"
   ]
 })
 
 export const createWebSiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "TechBlog",
-  "url": "https://techblog.com",
+  "name": "Panaversity",
+  "url": "https://panaversity.org",
   "description": "Modern Development Insights & Best Practices",
   "publisher": {
     "@type": "Organization",
-    "name": "TechBlog"
+    "name": "Panaversity"
   },
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://techblog.com/search?q={search_term_string}",
+    "target": "https://panaversity.org/search?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 })

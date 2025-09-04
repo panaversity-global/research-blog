@@ -224,7 +224,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": SITE_CONTENT.site.name,
               "url": `https://${SITE_CONTENT.site.domain}`,
-              "logo": `https://${SITE_CONTENT.site.domain}/logo.png`,
+              "logo": `https://${SITE_CONTENT.site.domain}/logo.webp`,
               "description": SITE_CONTENT.site.description,
               "foundingDate": SITE_CONTENT.site.founded,
               "address": {

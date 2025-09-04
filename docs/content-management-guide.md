@@ -40,7 +40,7 @@ export const SITE_CONTENT = {
   team: { ... },            // Team members & stats
   navigation: { ... },      // Menu items & links
   pages: { ... },           // Page-specific content
-  legal: { ... },           // Legal pages content
+
   seo: { ... },             // SEO keywords & meta
   social: { ... },          // Social media info
   newsletter: { ... },      // Newsletter content
@@ -82,12 +82,12 @@ npm run build
 ### **1. Site Identity (`site`)**
 ```typescript
 site: {
-  name: 'TechBlog',                    // ← Change your site name
+  name: 'Panaversity',                    // ← Change your site name
   tagline: 'Modern Development...',     // ← Change your tagline
   description: 'Discover cutting-edge...', // ← Change description
   founded: '2024',                      // ← Change founding year
-  domain: 'techblog.com',               // ← Change domain
-  email: 'contact@techblog.com',        // ← Change contact email
+      domain: 'panaversity.com',               // ← Change domain
+    email: 'contact@panaversity.com',        // ← Change contact email
   phone: '+1-555-0123',                 // ← Change phone number
 }
 ```
@@ -104,7 +104,7 @@ site: {
 ### **2. Business Information (`business`)**
 ```typescript
 business: {
-  name: 'TechBlog',                     // ← Change business name
+      name: 'Panaversity',                     // ← Change business name
   address: {
     street: '123 Tech Street',          // ← Change street address
     city: 'San Francisco',              // ← Change city
@@ -128,14 +128,14 @@ business: {
 ### **3. Contact Information (`contact`)**
 ```typescript
 contact: {
-  email: 'contact@techblog.com',        // ← Change email
+      email: 'contact@panaversity.com',        // ← Change email
   phone: '+1-555-0123',                 // ← Change phone
   address: 'San Francisco, CA',         // ← Change address
   responseTime: 'Within 24 hours',      // ← Change response time
   social: {
     twitter: {
-      handle: '@techblog',              // ← Change Twitter handle
-      url: 'https://twitter.com/techblog', // ← Change Twitter URL
+      handle: '@panaversity',              // ← Change Twitter handle
+      url: 'https://twitter.com/panaversity', // ← Change Twitter URL
     },
     facebook: { ... },                  // ← Change Facebook info
     linkedin: { ... },                  // ← Change LinkedIn info
@@ -198,9 +198,7 @@ navigation: {
   resources: [
     { name: 'Sitemap', href: '/sitemap.xml', description: 'Site structure' }, // ← Change resource links
   ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy', description: 'Data protection' }, // ← Change legal links
-  ]
+
 }
 ```
 
@@ -208,7 +206,7 @@ navigation: {
 - ✅ Main navigation menu
 - ✅ Footer navigation
 - ✅ Resource links
-- ✅ Legal page links
+
 
 ---
 
@@ -275,8 +273,8 @@ social: {
   platforms: [
     {
       name: 'Twitter',                  // ← Change platform name
-      handle: '@techblog',              // ← Change social handle
-      url: 'https://twitter.com/techblog', // ← Change social URL
+      handle: '@panaversity',              // ← Change social handle
+      url: 'https://twitter.com/panaversity', // ← Change social URL
       description: 'Follow us on Twitter for latest updates', // ← Change description
     }
   ],
@@ -320,7 +318,7 @@ newsletter: {
 footer: {
   tagline: 'Modern Development...',     // ← Change footer tagline
   description: 'Discover cutting-edge...', // ← Change description
-  copyright: '© 2025 TechBlog. All rights reserved.', // ← Change copyright
+      copyright: '© 2025 Panaversity. All rights reserved.', // ← Change copyright
   madeWith: 'Made with ❤️ using Next.js', // ← Change "made with" text
   poweredBy: 'Powered by Tailwind CSS', // ← Change "powered by" text
 }
@@ -340,7 +338,7 @@ footer: {
 ```typescript
 // In lib/content.ts, find:
 site: {
-  name: 'TechBlog',  // ← Change this line
+  name: 'Panaversity',  // ← Change this line
 }
 
 // Change to:
@@ -353,7 +351,7 @@ site: {
 ```typescript
 // Find:
 contact: {
-  email: 'contact@techblog.com',  // ← Change this line
+  email: 'contact@panaversity.com',  // ← Change this line
 }
 
 // Change to:
@@ -369,8 +367,8 @@ social: {
   platforms: [
     {
       name: 'Twitter',
-      handle: '@techblog',  // ← Change this line
-      url: 'https://twitter.com/techblog',  // ← Change this line
+        handle: '@panaversity',  // ← Change this line
+  url: 'https://twitter.com/panaversity',  // ← Change this line
     }
   ]
 }
@@ -422,8 +420,8 @@ The content file includes helper functions for easy access:
 // Get any content by path
 import { getContent } from '@/lib/content'
 
-const siteName = getContent('site.name')           // Returns: 'TechBlog'
-const contactEmail = getContent('contact.email')   // Returns: 'contact@techblog.com'
+const siteName = getContent('site.name')           // Returns: 'Panaversity'
+const contactEmail = getContent('contact.email')   // Returns: 'contact@panaversity.com'
 
 // Get specific team member
 import { getTeamMember } from '@/lib/content'

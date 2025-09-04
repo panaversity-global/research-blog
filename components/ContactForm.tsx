@@ -242,14 +242,7 @@ export default function ContactForm() {
         )}
       </Button>
 
-      {/* Privacy Notice */}
-      <p className="text-gray-500 text-sm text-center">
-        By submitting this form, you agree to our{' '}
-        <a href="/privacy" className="text-blue-600 hover:text-blue-700 underline">
-          Privacy Policy
-        </a>
-        . We'll never share your personal information with third parties.
-      </p>
+
     </form>
   )
 }

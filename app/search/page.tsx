@@ -3,31 +3,31 @@ import { Suspense } from 'react'
 import SearchInterface from '@/components/SearchInterface'
 
 export const metadata: Metadata = {
-  title: 'Search - TechBlog',
+  title: 'Search - Panaversity',
   description: 'Search through our collection of web development articles, programming tutorials, and technology insights.',
   keywords: ['search', 'blog search', 'article search', 'web development search', 'programming search'],
   openGraph: {
-    title: 'Search - TechBlog',
+    title: 'Search - Panaversity',
     description: 'Search through our collection of web development articles, programming tutorials, and technology insights.',
-    url: 'https://techblog.com/search',
+    url: 'https://panaversity.org/search',
     type: 'website',
     images: [
       {
-        url: '/api/og?title=Search%20-%20TechBlog&description=Search%20through%20our%20collection%20of%20articles',
+        url: '/api/og?title=Search%20-%20Panaversity&description=Search%20through%20our%20collection%20of%20articles',
         width: 1200,
         height: 630,
-        alt: 'Search - TechBlog'
+        alt: 'Search - Panaversity'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Search - TechBlog',
+    title: 'Search - Panaversity',
     description: 'Search through our collection of web development articles, programming tutorials, and technology insights.',
-    images: ['/api/og?title=Search%20-%20TechBlog&description=Search%20through%20our%20collection%20of%20articles']
+    images: ['/api/og?title=Search%20-%20Panaversity&description=Search%20through%20our%20collection%20of%20articles']
   },
   alternates: {
-    canonical: 'https://techblog.com/search'
+    canonical: 'https://panaversity.org/search'
   }
 }
 

@@ -2,20 +2,20 @@
 export const SITE_CONTENT = {
   // Site Identity
   site: {
-    name: 'TechBlog',
+    name: 'Panaversity',
     tagline: 'Modern Development Insights & Best Practices',
     description: 'Discover cutting-edge web development insights, programming tutorials, and industry best practices. Stay ahead with our expert analysis and practical guides.',
     shortDescription: 'Modern Development Insights & Best Practices',
     founded: '2024',
-    domain: 'techblog.com',
-    email: 'contact@techblog.com',
+    domain: 'panaversity.com',
+    email: 'contact@panaversity.com',
     phone: '+1-555-0123',
     fax: '+1-555-0124',
   },
 
   // Business Information
   business: {
-    name: 'TechBlog',
+    name: 'Panaversity',
     address: {
       street: '123 Tech Street',
       city: 'San Francisco',
@@ -36,7 +36,7 @@ export const SITE_CONTENT = {
 
   // Contact Information
   contact: {
-    email: 'contact@techblog.com',
+    email: 'contact@panaversity.com',
     phone: '+1-555-0123',
     fax: '+1-555-0124',
     address: 'San Francisco, CA',
@@ -44,23 +44,23 @@ export const SITE_CONTENT = {
     supportHours: 'Mon-Fri 9AM-6PM PST',
     social: {
       twitter: {
-        handle: '@techblog',
-        url: 'https://twitter.com/techblog',
+          handle: '@panaversity',
+          url: 'https://twitter.com/panaversity',
         displayName: 'Twitter'
       },
       facebook: {
-        handle: 'TechBlog',
-        url: 'https://facebook.com/techblog',
+          handle: 'Panaversity',
+          url: 'https://facebook.com/panaversity',
         displayName: 'Facebook'
       },
       linkedin: {
-        handle: 'TechBlog',
-        url: 'https://linkedin.com/company/techblog',
+          handle: 'Panaversity',
+          url: 'https://linkedin.com/company/panaversity',
         displayName: 'LinkedIn'
       },
       github: {
-        handle: 'techblog',
-        url: 'https://github.com/techblog',
+          handle: 'panaversity',
+          url: 'https://github.com/panaversity',
         displayName: 'GitHub'
       }
     }
@@ -155,7 +155,6 @@ export const SITE_CONTENT = {
       { name: 'Blog', href: '/blog', description: 'All blog posts' },
       { name: 'About', href: '/about', description: 'About our team' },
       { name: 'Contact', href: '/contact', description: 'Get in touch' },
-      { name: 'Privacy', href: '/privacy', description: 'Privacy policy' },
       { name: 'Search', href: '/search', description: 'Search articles' },
     ],
     resources: [
@@ -163,14 +162,9 @@ export const SITE_CONTENT = {
       { name: 'Latest Posts', href: '/blog', description: 'Recent articles' },
       { name: 'Popular Tags', href: '/search', description: 'Browse by topic' },
     ],
-    legal: [
-      { name: 'Privacy Policy', href: '/privacy', description: 'Data protection' },
-      { name: 'Terms of Service', href: '/terms', description: 'Usage terms' },
-      { name: 'Cookie Policy', href: '/cookies', description: 'Cookie usage' },
-      { name: 'DMCA', href: '/dmca', description: 'Copyright policy' },
-    ],
+
     footer: [
-      { name: 'About Us', href: '/about', description: 'Learn about TechBlog' },
+      { name: 'About Us', href: '/about', description: 'Learn about Panaversity' },
       { name: 'Contact', href: '/contact', description: 'Get in touch' },
       { name: 'Careers', href: '/careers', description: 'Join our team' },
       { name: 'Press Kit', href: '/press', description: 'Media resources' }
@@ -218,7 +212,7 @@ export const SITE_CONTENT = {
     about: {
       title: 'About Us',
       subtitle: 'Our Mission & Team',
-      description: 'Learn about TechBlog, our mission to share cutting-edge web development insights, and our commitment to helping developers grow.',
+      description: 'Learn about Panaversity, our mission to share cutting-edge web development insights, and our commitment to helping developers grow.',
       mission: {
         title: 'Our Mission',
         description: 'To empower developers with cutting-edge insights, practical knowledge, and industry best practices that accelerate their growth and success.',
@@ -231,12 +225,12 @@ export const SITE_CONTENT = {
       },
       story: {
         title: 'Our Story',
-        description: 'Founded in 2024, TechBlog emerged from a simple observation: developers needed a reliable source for practical, up-to-date technology insights.',
+        description: 'Founded in 2024, Panaversity emerged from a simple observation: developers needed a reliable source for practical, up-to-date technology insights.',
         milestones: [
           {
             year: '2024',
             title: 'Foundation',
-            description: 'TechBlog launched with a mission to share quality development insights'
+            description: 'Panaversity launched with a mission to share quality development insights'
           },
           {
             year: '2024',
@@ -254,7 +248,7 @@ export const SITE_CONTENT = {
     contact: {
       title: 'Contact Us',
       subtitle: 'Get In Touch',
-      description: 'Get in touch with the TechBlog team. We\'d love to hear from you about collaborations, feedback, or any questions you might have.',
+      description: 'Get in touch with the Panaversity team. We\'d love to hear from you about collaborations, feedback, or any questions you might have.',
       form: {
         title: 'Send us a message',
         description: 'We\'ll get back to you within 24 hours',
@@ -291,9 +285,9 @@ export const SITE_CONTENT = {
         methods: [
           {
             title: 'Email',
-            value: 'contact@techblog.com',
+            value: 'contact@panaversity.com',
             description: 'Send us an email anytime',
-            link: 'mailto:contact@techblog.com',
+            link: 'mailto:contact@panaversity.com',
             icon: 'Mail'
           },
           {
@@ -363,85 +357,7 @@ export const SITE_CONTENT = {
     }
   },
 
-  // Legal Content
-  legal: {
-    privacy: {
-      title: 'Privacy Policy',
-      lastUpdated: '2025-08-31',
-      description: 'How we collect, use, and protect your personal information.',
-      sections: [
-        {
-          title: 'Information We Collect',
-          content: 'We collect information you provide directly to us, such as when you subscribe to our newsletter, comment on articles, or contact us.'
-        },
-        {
-          title: 'How We Use Your Information',
-          content: 'We use the information we collect to provide, maintain, and improve our services, communicate with you, and personalize your experience.'
-        },
-        {
-          title: 'Information Sharing',
-          content: 'We do not sell, trade, or otherwise transfer your personal information to third parties without your consent.'
-        }
-      ]
-    },
-    terms: {
-      title: 'Terms of Service',
-      lastUpdated: '2025-08-31',
-      description: 'Terms and conditions for using our website and services.',
-      sections: [
-        {
-          title: 'Acceptance of Terms',
-          content: 'By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.'
-        },
-        {
-          title: 'Use License',
-          content: 'Permission is granted to temporarily download one copy of the materials on TechBlog\'s website for personal, non-commercial transitory viewing only.'
-        },
-        {
-          title: 'Disclaimer',
-          content: 'The materials on TechBlog\'s website are provided on an \'as is\' basis. TechBlog makes no warranties, expressed or implied.'
-        }
-      ]
-    },
-    cookies: {
-      title: 'Cookie Policy',
-      lastUpdated: '2025-08-31',
-      description: 'How we use cookies and similar technologies on our website.',
-      sections: [
-        {
-          title: 'What Are Cookies',
-          content: 'Cookies are small text files that are placed on your device when you visit our website.'
-        },
-        {
-          title: 'How We Use Cookies',
-          content: 'We use cookies to improve your browsing experience, analyze site traffic, and understand where our visitors are coming from.'
-        },
-        {
-          title: 'Managing Cookies',
-          content: 'You can control and/or delete cookies as you wish. You can delete all cookies that are already on your computer.'
-        }
-      ]
-    },
-    dmca: {
-      title: 'DMCA Policy',
-      lastUpdated: '2025-08-31',
-      description: 'Our policy for handling copyright infringement claims.',
-      sections: [
-        {
-          title: 'Copyright Protection',
-          content: 'We respect the intellectual property rights of others and expect our users to do the same.'
-        },
-        {
-          title: 'Filing a DMCA Notice',
-          content: 'If you believe your copyrighted work has been used inappropriately, please send us a DMCA notice.'
-        },
-        {
-          title: 'Counter-Notification',
-          content: 'If you believe your content was removed by mistake, you may file a counter-notification.'
-        }
-      ]
-    }
-  },
+
 
   // SEO Content
   seo: {
@@ -478,11 +394,11 @@ export const SITE_CONTENT = {
       'API Development'
     ],
     defaultMeta: {
-      title: 'TechBlog - Modern Development Insights & Best Practices',
+      title: 'Panaversity - Modern Development Insights & Best Practices',
       description: 'Discover cutting-edge web development insights, programming tutorials, and industry best practices. Stay ahead with our expert analysis and practical guides.',
       keywords: 'web development, programming, software engineering, technology, coding best practices',
-      author: 'TechBlog Team',
-      publisher: 'TechBlog',
+      author: 'Panaversity Team',
+      publisher: 'Panaversity',
       category: 'technology'
     }
   },
@@ -492,29 +408,29 @@ export const SITE_CONTENT = {
     platforms: [
       {
         name: 'Twitter',
-        handle: '@techblog',
-        url: 'https://twitter.com/techblog',
+          handle: '@panaversity',
+          url: 'https://twitter.com/panaversity',
         icon: 'Twitter',
         description: 'Follow us on Twitter for latest updates'
       },
       {
         name: 'Facebook',
-        handle: 'TechBlog',
-        url: 'https://facebook.com/techblog',
+          handle: 'Panaversity',
+          url: 'https://facebook.com/panaversity',
         icon: 'Facebook',
         description: 'Like us on Facebook'
       },
       {
         name: 'LinkedIn',
-        handle: 'TechBlog',
-        url: 'https://linkedin.com/company/techblog',
+          handle: 'Panaversity',
+          url: 'https://linkedin.com/company/panaversity',
         icon: 'LinkedIn',
         description: 'Connect with us on LinkedIn'
       },
       {
         name: 'GitHub',
-        handle: 'techblog',
-        url: 'https://github.com/techblog',
+          handle: 'panaversity',
+          url: 'https://github.com/panaversity',
         icon: 'GitHub',
         description: 'Check out our projects on GitHub'
       }
@@ -534,7 +450,7 @@ export const SITE_CONTENT = {
     button: 'Subscribe',
     success: 'Successfully subscribed!',
     error: 'Subscription failed. Please try again.',
-    privacy: 'We respect your privacy. Unsubscribe at any time.',
+    privacy: 'Unsubscribe at any time.',
     frequency: 'Weekly digest of our best content'
   },
 
@@ -542,7 +458,7 @@ export const SITE_CONTENT = {
   footer: {
     tagline: 'Modern Development Insights & Best Practices',
     description: 'Discover cutting-edge web development insights, programming tutorials, and industry best practices.',
-    copyright: '© 2025 TechBlog. All rights reserved.',
+    copyright: '© 2025 Panaversity. All rights reserved.',
     madeWith: 'Made with ❤️ using Next.js',
     poweredBy: 'Powered by Tailwind CSS',
     links: {

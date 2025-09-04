@@ -1,4 +1,4 @@
-# SEO Testing Checklist for TechBlog
+# SEO Testing Checklist for Panaversity
 
 ## 🧪 **Development Testing Checklist**
 

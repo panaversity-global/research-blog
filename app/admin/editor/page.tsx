@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Markdown } from "@/lib/markdown"
 import dynamic from "next/dynamic"
 import { 
@@ -22,7 +22,11 @@ import {
   Palette,
   Sparkles,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+  Maximize2,
+  Minimize2
 } from "lucide-react"
 
 // Dynamically import the markdown editor to avoid SSR issues
@@ -43,6 +47,7 @@ import "react-markdown-editor-lite/lib/index.css"
 import "./editor-styles.css"
 
 export default function EditorPage() {
+  const DRAFT_STORAGE_KEY = "editor_draft_v1"
   const [title, setTitle] = useState("")
   const [date, setDate] = useState(() => {
     const today = new Date()
@@ -50,12 +55,16 @@ export default function EditorPage() {
   })
   const [author, setAuthor] = useState("")
   const [tags, setTags] = useState("")
+  const [category, setCategory] = useState("")
   const [summary, setSummary] = useState("")
   const [canonical, setCanonical] = useState("")
   const [content, setContent] = useState("")
   const [status, setStatus] = useState<string | null>(null)
   const [editorMode, setEditorMode] = useState<'raw' | 'rich'>('raw')
+  const [previewExpanded, setPreviewExpanded] = useState(false)
+  const [fullscreenPreview, setFullscreenPreview] = useState(false)
   const fileInputRef = useRef<HTMLInputElement | null>(null)
+  const autosaveTimerRef = useRef<NodeJS.Timeout | null>(null)
 
   const [seoData, setSeoData] = useState({
     title: '' as string,
@@ -75,11 +84,68 @@ export default function EditorPage() {
       authorName: '' as string,
       authorUrl: '' as string,
       publisherName: 'TechBlog' as string,
-      publisherLogo: '/logo.png' as string,
+      publisherLogo: '/logo.webp' as string,
       articleSection: 'Technology' as string,
       articleTags: [] as string[]
     }
   })
+
+  // Load draft from localStorage on mount
+  useEffect(() => {
+    try {
+      const raw = typeof window !== 'undefined' ? localStorage.getItem(DRAFT_STORAGE_KEY) : null
+      if (raw) {
+        const draft = JSON.parse(raw) as Partial<Record<string, string>>
+        if (draft.title) setTitle(draft.title)
+        if (draft.date) setDate(draft.date)
+        if (draft.author) setAuthor(draft.author)
+        if (draft.tags) setTags(draft.tags)
+        if (draft.category) setCategory(draft.category)
+        if (draft.summary) setSummary(draft.summary)
+        if (draft.canonical) setCanonical(draft.canonical)
+        if (draft.content) setContent(draft.content)
+        setStatus((prev) => prev ?? "Draft restored from local storage")
+      }
+    } catch {}
+  }, [])
+
+  // Autosave draft to localStorage (debounced)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (autosaveTimerRef.current) clearTimeout(autosaveTimerRef.current)
+    autosaveTimerRef.current = setTimeout(() => {
+      try {
+        const data = {
+          title,
+          date,
+          author,
+          tags,
+          category,
+          summary,
+          canonical,
+          content,
+        }
+        localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(data))
+        setStatus((prev) => prev === null ? null : "Draft saved locally")
+      } catch {}
+    }, 800)
+
+    return () => {
+      if (autosaveTimerRef.current) clearTimeout(autosaveTimerRef.current)
+    }
+  }, [title, date, author, tags, category, summary, canonical, content])
+
+  // Ensure draft saved on tab close/navigation
+  useEffect(() => {
+    const handler = () => {
+      try {
+        const data = { title, date, author, tags, category, summary, canonical, content }
+        localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(data))
+      } catch {}
+    }
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [title, date, author, tags, category, summary, canonical, content])
 
   async function saveJson() {
     setStatus("Saving...")
@@ -88,6 +154,7 @@ export default function EditorPage() {
       date,
       author: author || undefined,
       tags: tags ? tags.split(",").map((t) => t.trim()).filter(Boolean) : undefined,
+      category: category || undefined,
       summary: summary || undefined,
       canonical: canonical || undefined,
       ai_readable: true,
@@ -99,6 +166,9 @@ export default function EditorPage() {
     })
     const data = await res.json()
     setStatus(res.ok ? `Saved as ${data.slug}` : `Error: ${data.error}`)
+    if (res.ok && typeof window !== 'undefined') {
+      try { localStorage.removeItem(DRAFT_STORAGE_KEY) } catch {}
+    }
   }
 
   async function uploadFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -188,14 +258,14 @@ export default function EditorPage() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Header Section */}
       <div className="border-b border-border/40 bg-background/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-6">
+        <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center">
                 <FileText className="w-5 h-5 text-primary-foreground" />
               </div>
-        <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
                   Blog Editor
                 </h1>
                 <p className="text-sm text-muted-foreground">
@@ -203,16 +273,37 @@ export default function EditorPage() {
                 </p>
               </div>
             </div>
+            
+            {/* Action Buttons */}
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => setPreviewExpanded(!previewExpanded)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors duration-200 text-sm font-medium"
+              >
+                <Eye className="w-4 h-4" />
+                {previewExpanded ? 'Hide Preview' : 'Show Preview'}
+                {previewExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+              </button>
+              
+              <button 
+                onClick={saveJson}
+                disabled={!title || !date || !content}
+                className="px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:from-primary/90 hover:to-primary/70 transition-all duration-200 font-medium flex items-center space-x-2 shadow-lg shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Save className="w-4 h-4" />
+                <span>{status === "Saving..." ? "Saving..." : "Save Post"}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-          {/* Left Column - Form */}
-          <div className="space-y-6">
+      <div className="container mx-auto px-6 py-6">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          {/* Left Column - Post Details */}
+          <div className="xl:col-span-1">
             {/* Post Details Card */}
-            <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5">
+            <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5 xl:sticky xl:top-24 z-20">
               <div className="flex items-center space-x-2 mb-6">
                 <div className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-blue-500" />
@@ -277,6 +368,42 @@ export default function EditorPage() {
                   </p>
             </div>
             
+            <div>
+              <label htmlFor="category" className="block text-sm font-medium text-foreground mb-2">Category</label>
+              <select 
+                id="category"
+                    className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200" 
+                value={category} 
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="">Select a category</option>
+                <option value="Technology">Technology</option>
+                <option value="Programming">Programming</option>
+                <option value="AI & Machine Learning">AI & Machine Learning</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile Development">Mobile Development</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="Blockchain">Blockchain</option>
+                <option value="Tutorials">Tutorials</option>
+                <option value="News">News</option>
+                <option value="Reviews">Reviews</option>
+                <option value="Opinions">Opinions</option>
+                <option value="Case Studies">Case Studies</option>
+                <option value="Best Practices">Best Practices</option>
+                <option value="Tools">Tools</option>
+                <option value="Frameworks">Frameworks</option>
+                <option value="Libraries">Libraries</option>
+                <option value="Other">Other</option>
+              </select>
+                  <p className="text-xs text-muted-foreground mt-2 flex items-center space-x-1">
+                    <span>📂</span>
+                    <span>Choose the main topic category</span>
+                  </p>
+            </div>
+            
                 <div className="md:col-span-2">
               <label htmlFor="summary" className="block text-sm font-medium text-foreground mb-2">Summary</label>
               <textarea 
@@ -290,24 +417,24 @@ export default function EditorPage() {
             </div>
             
                 <div className="md:col-span-2">
-              <label htmlFor="canonical" className="block text-sm font-medium text-foreground mb-2">Canonical URL</label>
+              <label htmlFor="canonical" className="block text-sm font-medium text-foreground mb-2">Hero Image URL</label>
               <input 
                 id="canonical"
                     className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 placeholder:text-muted-foreground/60" 
-                placeholder="https://example.com/original-post" 
+                placeholder="https://example.com/cover.jpg (optional)" 
                 value={canonical} 
                 onChange={(e) => setCanonical(e.target.value)} 
               />
                   <p className="text-xs text-muted-foreground mt-2 flex items-center space-x-1">
-                    <span>🔗</span>
-                    <span>If this is a repost from another site</span>
+                    <span>🖼️</span>
+                    <span>Tip: You can also add an image in content; first image will be used automatically.</span>
                   </p>
                 </div>
               </div>
             </div>
-            
+
             {/* Content Editor Card */}
-            <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5">
+            <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5 relative z-10">
               {/* Editor Mode Toggle - Positioned above Content */}
               <div className="flex items-center justify-center mb-6">
                 <div className="flex items-center space-x-2 bg-muted/50 rounded-lg p-1">
@@ -401,7 +528,7 @@ export default function EditorPage() {
               ) : (
                 <>
                   {/* Enhanced Visual Toolbar */}
-                  <div className="mb-4 p-4 bg-gradient-to-r from-muted/50 to-muted/30 border border-border/50 rounded-xl">
+                  <div className="mb-4 p-4 bg-gradient-to-r from-muted/50 to-muted/30 border border-border/50 rounded-xl relative z-0">
                     <div className="flex flex-wrap gap-3 items-center">
                       <span className="text-sm font-medium text-foreground mr-2">Formatting Tools:</span>
                       
@@ -577,7 +704,7 @@ export default function EditorPage() {
                     </div>
                   </div>
 
-                  <div className="border border-border/50 rounded-xl overflow-hidden shadow-sm">
+                  <div className="border border-border/50 rounded-xl overflow-hidden shadow-sm relative z-0">
                     <MarkdownEditor
                       value={content}
                       onChange={({ text }) => setContent(text)}
@@ -622,7 +749,7 @@ export default function EditorPage() {
                 </>
               )}
             </div>
-            
+
             {/* Action Buttons */}
             <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5">
               <div className="flex flex-wrap gap-4 items-center justify-between">
@@ -668,40 +795,49 @@ export default function EditorPage() {
             </div>
           </div>
         </div>
-        
-          {/* Right Column - Preview */}
-          <div className="space-y-6">
+
+          {/* Right Column - Editor + Preview */}
+          <div className="xl:col-span-2 space-y-6">
             {/* Preview Header */}
             <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5">
-          <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-orange-500/10 rounded-lg flex items-center justify-center">
                     <Eye className="w-4 h-4 text-orange-500" />
                   </div>
                   <h2 className="text-xl font-semibold">Live Preview</h2>
                 </div>
-            <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
+                  <button 
+                    type="button"
+                    onClick={() => setPreviewExpanded(!previewExpanded)}
+                    className="px-3 py-1.5 text-xs rounded-md bg-muted/50 hover:bg-muted transition-colors"
+                  >
+                    {previewExpanded ? 'Hide' : 'Show'}
+                  </button>
                   <span className={`px-3 py-1 text-xs rounded-full font-medium ${
-                editorMode === 'raw' 
-                  ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' 
-                  : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
-              }`}>
-                {editorMode === 'raw' ? 'Raw Markdown' : 'Rich Editor'}
-              </span>
-            </div>
-          </div>
+                    editorMode === 'raw' 
+                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' 
+                      : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                  }`}>
+                    {editorMode === 'raw' ? 'Raw Markdown' : 'Rich Editor'}
+                  </span>
+                </div>
+              </div>
               
-              <div className="text-sm text-muted-foreground mb-4">
-                See how your post will look to readers in real-time
+              <div className="text-sm text-muted-foreground">
+                Toggle to preview your content in real-time.
               </div>
             </div>
             
             {/* Preview Content */}
-            <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5 min-h-[600px]">
-              <div className="prose prose-sm dark:prose-invert max-w-none">
-                <Markdown content={content || "# Start writing...\n\n```ts\nconsole.log('hello world')\n```\n\nThis is where your content preview will appear."} />
+            {previewExpanded && (
+              <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5 min-h-[600px]">
+                <div className="prose prose-sm dark:prose-invert max-w-none">
+                  <Markdown content={content || "# Start writing...\n\n```ts\nconsole.log('hello world')\n```\n\nThis is where your content preview will appear."} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -4,6 +4,9 @@ date: '2025-09-01'
 author: Zia Khan
 tags:
   - panaversity
+  - certification
+  - ai
+category: 'AI & Machine Learning'
 summary: >-
   The Panaversity Certified Agentic and Robotic AI Engineer is a multi-level
   certification program focused on Python, agentic AI, cloud-native systems, and

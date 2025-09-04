@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, MapPin, Phone, Clock, Twitter, Facebook, Linkedin, Github } from 'lucide-react'
 import { SITE_CONTENT } from '@/lib/content'
 
@@ -7,13 +8,18 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                {SITE_CONTENT.site.name.substring(0, 2).toUpperCase()}
+              <div className="w-10 h-10 relative">
+                <Image
+                  src="/logo.webp"
+                  alt="Panaversity Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {SITE_CONTENT.site.name}
@@ -80,23 +86,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal & Social */}
+          {/* Social Links */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 mb-6">
-              {SITE_CONTENT.navigation.legal.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Social Links */}
             <h3 className="text-gray-900 font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               {SITE_CONTENT.social.platforms.map((platform) => {

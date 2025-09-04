@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" }
   
   const { frontmatter } = post
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://techblog.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://panaversity.org'
   const postUrl = `${baseUrl}/posts/${slug}`
   
   // Calculate reading time
@@ -48,10 +48,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     "publisher": {
       "@type": "Organization",
-      "name": "TechBlog",
+              "name": "Panaversity",
       "logo": {
         "@type": "ImageObject",
-        "url": `${baseUrl}/logo.png`
+        "url": `${baseUrl}/logo.webp`
       }
     },
     "datePublished": frontmatter.date,
@@ -68,12 +68,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${frontmatter.title} - TechBlog`,
+          title: `${frontmatter.title} - Panaversity`,
     description: frontmatter.summary,
     keywords: frontmatter.tags?.join(", ") || "web development, technology, programming",
     authors: [{ name: frontmatter.author }],
     creator: frontmatter.author,
-    publisher: "TechBlog",
+            publisher: "Panaversity",
 
     category: frontmatter.tags?.[0] || "Technology",
     
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: frontmatter.title,
       description: frontmatter.summary,
       url: postUrl,
-      siteName: "TechBlog",
+              siteName: "Panaversity",
       locale: "en_US",
       type: "article",
       publishedTime: frontmatter.date,
@@ -107,8 +107,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: frontmatter.title,
       description: frontmatter.summary,
       images: [frontmatter.image || `${baseUrl}/api/og?title=${encodeURIComponent(frontmatter.title)}`],
-      creator: "@techblog",
-      site: "@techblog"
+              creator: "@panaversity",
+        site: "@panaversity"
     },
     
     // Canonical URL
@@ -120,7 +120,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     other: {
       "article:published_time": frontmatter.date,
       "article:modified_time": frontmatter.date,
-      "article:author": frontmatter.author || "TechBlog Team",
+              "article:author": frontmatter.author || "Panaversity Team",
       "article:section": frontmatter.tags?.[0] || "Technology",
       "article:tag": frontmatter.tags?.join(", ") || "web development, technology, programming",
       "application/ld+json": JSON.stringify(structuredData)

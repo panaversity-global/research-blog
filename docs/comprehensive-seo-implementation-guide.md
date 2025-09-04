@@ -1,7 +1,7 @@
-# Comprehensive SEO Implementation Guide for TechBlog
+# Comprehensive SEO Implementation Guide for Panaversity
 
 ## 🎯 **Overview**
-This document provides a complete, in-depth guide to the SEO implementation in TechBlog, covering all aspects from setup to testing and maintenance.
+This document provides a complete, in-depth guide to the SEO implementation in Panaversity, covering all aspects from setup to setup to testing and maintenance.
 
 ## 🚀 **SEO Features Implemented**
 
@@ -133,8 +133,8 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@techblog',
-    creator: '@techblog',
+            site: '@panaversity',
+        creator: '@panaversity',
     title: `${SITE_NAME} - ${SITE_DESCRIPTION}`,
     description: SITE_DESCRIPTION,
     images: [/* ... */]

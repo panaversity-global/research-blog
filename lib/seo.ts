@@ -389,7 +389,7 @@ export function generatePostStructuredData(post: {
       "name": SITE_NAME,
       "logo": {
         "@type": "ImageObject",
-        "url": `${BASE_URL}/logo.png`
+        "url": `${BASE_URL}/logo.webp`
       }
     },
     "datePublished": post.date,
@@ -413,7 +413,7 @@ export function generateOrganizationStructuredData() {
     "@type": "Organization",
     "name": SITE_NAME,
     "url": BASE_URL,
-    "logo": `${BASE_URL}/logo.png`,
+    "logo": `${BASE_URL}/logo.webp`,
     "description": SITE_DESCRIPTION,
     "foundingDate": "2024",
     "address": {

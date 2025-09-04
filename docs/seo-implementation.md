@@ -1,6 +1,6 @@
-# SEO Implementation Guide - TechBlog
+# SEO Implementation Guide - Panaversity
 
-This document outlines the comprehensive SEO implementation for TechBlog using Next.js 15's advanced features and modern SEO best practices.
+This document outlines the comprehensive SEO implementation for Panaversity using Next.js 15's advanced features and modern SEO best practices.
 
 ## 🚀 **Core SEO Features Implemented**
 
@@ -31,7 +31,7 @@ openGraph: {
   title: post.title,
   description: post.summary,
   url: postUrl,
-  siteName: "TechBlog",
+          siteName: "Panaversity",
   locale: "en_US",
   type: "article",
   publishedTime: post.date,
@@ -56,8 +56,8 @@ twitter: {
   title: post.title,
   description: post.summary,
   images: [post.image || ogImageUrl],
-  creator: "@techblog",
-  site: "@techblog"
+          creator: "@panaversity",
+        site: "@panaversity"
 }
 ```
 
@@ -147,7 +147,7 @@ app/
 ### **Environment Configuration**
 ```bash
 # SEO Configuration
-NEXT_PUBLIC_BASE_URL=https://techblog.com
+NEXT_PUBLIC_BASE_URL=https://panaversity.com
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-code
 ```

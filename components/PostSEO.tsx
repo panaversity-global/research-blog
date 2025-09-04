@@ -85,8 +85,8 @@ export default function PostSEO({
       articleType: initialData?.structuredData?.articleType || 'BlogPosting',
       authorName: initialData?.structuredData?.authorName || postAuthor || '',
       authorUrl: initialData?.structuredData?.authorUrl || '',
-      publisherName: initialData?.structuredData?.publisherName || 'TechBlog',
-      publisherLogo: initialData?.structuredData?.publisherLogo || '/logo.png',
+      publisherName: initialData?.structuredData?.publisherName || 'Panaversity',
+      publisherLogo: initialData?.structuredData?.publisherLogo || '/logo.webp',
       articleSection: initialData?.structuredData?.articleSection || postTags[0] || 'Technology',
       articleTags: initialData?.structuredData?.articleTags || postTags || []
     }
@@ -595,7 +595,7 @@ export default function PostSEO({
                       publisherLogo: e.target.value
                     }
                   }))}
-                  placeholder="https://example.com/logo.png"
+                  placeholder="https://example.com/logo.webp"
                 />
               </div>
 
@@ -662,7 +662,7 @@ export default function PostSEO({
                 <h4 className="font-semibold text-sm text-muted-foreground">Google Search Preview</h4>
                 <div className="border rounded-lg p-4 bg-gray-50 dark:bg-gray-900">
                   <div className="text-blue-600 text-sm mb-1">
-                    {seoData.canonicalUrl || 'https://techblog.com/posts/...'}
+                    {seoData.canonicalUrl || 'https://panaversity.org/posts/...'}
                   </div>
                   <div className="text-xl text-blue-800 dark:text-blue-400 font-medium mb-1">
                     {seoData.title || 'SEO Title'}
@@ -694,7 +694,7 @@ export default function PostSEO({
                   )}
                   <div className="p-3">
                     <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">
-                      {seoData.canonicalUrl || 'techblog.com'}
+                      {seoData.canonicalUrl || 'panaversity.com'}
                     </div>
                     <div className="font-semibold text-sm mb-1">
                       {seoData.ogTitle || 'Open Graph Title'}
@@ -727,7 +727,7 @@ export default function PostSEO({
                   )}
                   <div className="p-3">
                     <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">
-                      {seoData.canonicalUrl || 'techblog.com'}
+                      {seoData.canonicalUrl || 'panaversity.com'}
                     </div>
                     <div className="font-semibold text-sm mb-1">
                       {seoData.twitterTitle || 'Twitter Title'}

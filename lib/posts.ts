@@ -7,6 +7,7 @@ export interface PostFrontmatter {
   date: string
   author?: string
   tags?: string[]
+  category?: string
   summary?: string
   canonical?: string
   ai_readable?: boolean
@@ -90,17 +91,26 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
   const parsed = matter(raw)
 
   const fm = parsed.data as Record<string, unknown>
+  const content = parsed.content
+
+  function extractFirstImageUrl(markdown: string): string | undefined {
+    const mdMatch = markdown.match(/!\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)/)
+    if (mdMatch?.[1]) return mdMatch[1]
+    const htmlMatch = markdown.match(/<img[^>]*src=["']([^"']+)["'][^>]*>/i)
+    if (htmlMatch?.[1]) return htmlMatch[1]
+    return undefined
+  }
   const frontmatter: PostFrontmatter = {
     title: String(fm.title || "Untitled"),
     date: formatDateString(fm.date),
     author: fm.author ? String(fm.author) : undefined,
     tags: Array.isArray(fm.tags) ? (fm.tags as unknown[]).map(String) : undefined,
+    category: fm.category ? String(fm.category) : undefined,
     summary: fm.summary ? String(fm.summary) : undefined,
     canonical: fm.canonical ? String(fm.canonical) : undefined,
     ai_readable: Boolean(fm.ai_readable ?? true),
-    image: fm.image ? String(fm.image) : undefined,
+    image: fm.image ? String(fm.image) : extractFirstImageUrl(content),
   }
-  const content = parsed.content
 
   return {
     slug,
@@ -115,4 +125,17 @@ export async function getAllPosts(): Promise<PostData[]> {
   return (posts.filter(Boolean) as PostData[]).sort(
     (a, b) => new Date(a.frontmatter.date).getTime() < new Date(b.frontmatter.date).getTime() ? 1 : -1,
   )
+}
+
+export async function getAllCategories(): Promise<string[]> {
+  const posts = await getAllPosts()
+  const categories = posts
+    .map(post => post.frontmatter.category)
+    .filter((category): category is string => Boolean(category))
+  return [...new Set(categories)].sort()
+}
+
+export async function getPostsByCategory(category: string): Promise<PostData[]> {
+  const posts = await getAllPosts()
+  return posts.filter(post => post.frontmatter.category === category)
 }

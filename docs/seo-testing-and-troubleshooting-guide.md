@@ -1,4 +1,4 @@
-# SEO Testing and Troubleshooting Guide for TechBlog
+# SEO Testing and Troubleshooting Guide for Panaversity
 
 ## 🧪 **Complete Testing Framework**
 
@@ -196,8 +196,8 @@ const [seoData, setSeoData] = useState({
     articleType: 'BlogPosting' as const,
     authorName: '',
     authorUrl: '',
-    publisherName: 'TechBlog',
-    publisherLogo: '/logo.png',
+            publisherName: 'Panaversity',
+    publisherLogo: '/logo.webp',
     articleSection: 'Technology',
     articleTags: []
   }
@@ -466,4 +466,4 @@ Your SEO implementation is working correctly when:
 
 **Last Updated**: December 2024  
 **Version**: 2.0  
-**Maintained By**: TechBlog Development Team
+**Maintained By**: Panaversity Development Team

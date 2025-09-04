@@ -58,9 +58,7 @@ export default function NotFound() {
             <Link href="/search" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
               Search
             </Link>
-            <Link href="/privacy" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
-              Privacy Policy
-            </Link>
+            
           </div>
         </div>
 
