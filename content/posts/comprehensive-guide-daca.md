@@ -6,6 +6,8 @@ tags:
   - panaversity
   - daca
 ai_readable: true
+featured: true
+category: "AI & Machine Learning"
 ---
 # Comprehensive Guide to Dapr Agentic Cloud Ascent (DACA) Design Pattern - Addresses 10 Million Concurrent Agents Challenge 
 

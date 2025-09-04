@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { Menu, X, BookOpen, Users, Mail, Shield, PenTool } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,11 +20,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navigation = [
-    { name: 'Blog', href: '/blog', icon: BookOpen },
-          { name: 'About', href: '/about', icon: Users },
-      { name: 'Contact', href: '/contact', icon: Mail }
-    ]
+  const navigation: Array<{ name: string; href: string; icon: any }> = []
 
   const isActive = (href: string) => {
     return pathname.startsWith(href)
@@ -40,7 +36,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <div className="w-36 sm:w-44 h-12 relative transition-all duration-300">
+            <div className="w-48 sm:w-56 h-16 relative transition-all duration-300">
               <Image
                 src="/logo.png"
                 alt="Site Logo"
@@ -71,19 +67,6 @@ export default function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
-            {/* Write Post Button */}
-            <Button
-              asChild
-              size="sm"
-              className="bg-primary text-primary-foreground hover:opacity-90 px-6 py-2 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0"
-            >
-              <Link href="/admin/editor">
-                <PenTool className="mr-2 h-4 w-4" />
-                <span className="hidden sm:inline">Write Post</span>
-                <span className="sm:hidden">Write</span>
-              </Link>
-            </Button>
-
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
@@ -116,15 +99,6 @@ export default function Header() {
                 </Link>
               ))}
 
-              {/* Mobile Write Post Link */}
-              <Link
-                href="/admin/editor"
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <PenTool className="h-5 w-5" />
-                Write Post
-              </Link>
             </div>
           </div>
         )}

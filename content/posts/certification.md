@@ -13,6 +13,7 @@ summary: >-
   robotics. It validates skills from foundational coding to advanced AI
   protocols and physical AI integration.
 ai_readable: true
+featured: true
 ---
 # Panaversity Certified Agentic and Robotic AI Engineer
 

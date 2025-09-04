@@ -37,28 +37,15 @@ export default function NotFound() {
               Go Home
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-800/50">
-            <Link href="/blog">
-              <Search className="mr-2 h-5 w-5" />
-              Browse Articles
-            </Link>
-          </Button>
         </div>
 
         {/* Helpful Links */}
         <div className="space-y-4">
           <h2 className="text-lg font-semibold text-white mb-4">Popular Pages</h2>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/about" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
-              About Us
-            </Link>
-            <Link href="/contact" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
-              Contact
-            </Link>
             <Link href="/search" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
               Search
             </Link>
-            
           </div>
         </div>
 

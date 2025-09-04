@@ -1,165 +1,125 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Mail, MapPin, Phone, Clock, Twitter, Facebook, Linkedin, Github } from 'lucide-react'
-import { SITE_CONTENT } from '@/lib/content'
+import type React from "react"
+import Image from "next/image"
+import { FaFacebook, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
+import { RiInstagramFill } from "react-icons/ri";
+import { IoLogoYoutube } from "react-icons/io";
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear()
+import FooterColumn from "./FooterColumn"
+import Link from "next/link"
+
+const socialIcons = [
+  {
+    icon: FaFacebook,
+    name: "Facebook",
+    link: "https://facebook.com/panaversity/",
+  },
+  { 
+    icon: RiInstagramFill, 
+    name: "Instagram", 
+    link: "https://www.instagram.com/panaversity/?igsh=cmljY3A2bmcyNzl3#" 
+  },
+  {
+    icon: IoLogoYoutube,
+    name: "Youtube",
+    link: "https://www.youtube.com/channel/UCV1ZbnHzA7FwG7XXYYzE84w",
+  },
+  {
+    icon: FaLinkedinIn,
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/company/panaversity/",
+  },
+]
+
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear(); // Get current year dynamically
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 relative">
+    <footer className="bg-[#031811] pt-[4.5rem] text-white">
+      <div className="flex w-full justify-center">
+        <div className="mx-6 grid grid-cols-1 items-start gap-8 sm:grid-cols-2 md:mx-16 lg:max-w-[950px] lg:grid-cols-4 xl:max-w-6xl">
+          {/* Left section: Logo & Social Icons */}
+          <div className="col-span-2 sm:col-span-2 md:col-span-1">
+            <div className="mb-6 lg:-mt-9 xl:-mt-4">
+              {/* Logo */}
+              <Link href="/" aria-label="Panaversity Home">
                 <Image
-                  src="/logo.webp"
-                  alt="Panaversity Logo"
-                  fill
-                  className="object-contain"
+                  src="/logo.png"
+                  alt="Panaversity logo"
+                  className="mb-2 h-20 w-auto cursor-pointer"
+                  width={200}
+                  height={80}
                 />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {SITE_CONTENT.site.name}
-              </span>
-            </Link>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              {SITE_CONTENT.footer.description}
-            </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-blue-600" />
-                <a href={`mailto:${SITE_CONTENT.contact.email}`} className="hover:text-blue-600 transition-colors">
-                  {SITE_CONTENT.contact.email}
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-blue-600" />
-                <span>{SITE_CONTENT.contact.phone}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-600" />
-                <span>{SITE_CONTENT.contact.address}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-blue-600" />
-                <span>{SITE_CONTENT.contact.supportHours}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Navigation */}
-          <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-2">
-              {SITE_CONTENT.navigation.main.map((item) => (
-                <li key={item.name}>
+              </Link>
+              <p className="mb-1 mt-1 text-sm leading-relaxed text-gray-400">
+                Panaversity is a cloud-native learning platform for Agentic AI, robotics, and next-gen AI skills.
+              </p>
+              <div className="flex gap-4 py-2">
+                {socialIcons.map(({ icon: Icon, name, link }, index) => (
                   <Link
-                    href={item.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              {SITE_CONTENT.navigation.resources.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              {SITE_CONTENT.social.platforms.map((platform) => {
-                const IconComponent = getIconComponent(platform.name)
-                return (
-                  <a
-                    key={platform.name}
-                    href={platform.url}
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                    href={link}
+                    key={index}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    title={platform.description}
+                    aria-label={name}
                   >
-                    <span className="sr-only">{platform.name}</span>
-                    <IconComponent className="h-5 w-5" />
-                  </a>
-                )
-              })}
+                    <Icon className="h-[1.5rem] w-[1.5rem] cursor-pointer text-gray-200 transition-all duration-150 hover:text-green-400" />
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="max-w-md">
-            <h3 className="text-gray-900 font-semibold mb-2">{SITE_CONTENT.newsletter.title}</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              {SITE_CONTENT.newsletter.description}
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder={SITE_CONTENT.newsletter.placeholder}
-                className="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200">
-                {SITE_CONTENT.newsletter.button}
-              </button>
-            </div>
-          </div>
-        </div>
+          {/* Column Sections */}
+          <FooterColumn
+            title="Company"
+            links={[
+              { name: "About Us", href: "https://panaversity.org/#about" },
+              { name: "Flagship Program", href: "https://panaversity.org/flagship-program" },
+              { name: "Courses", href: "https://panaversity.org/flagship-program/courses" },
+              { name: "Terms & Conditions", href: "https://panaversity.org/terms-and-conditions" },
+              { name: "Certifications", href: "https://panaversity.org/certifications" },
+            ]}
+            className="lg:ml-20"
+          />
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-600 text-sm">
-              {SITE_CONTENT.footer.copyright.replace('2025', currentYear.toString())}
-            </p>
-            <div className="flex items-center gap-6 text-sm text-gray-600">
-              <span>{SITE_CONTENT.footer.madeWith}</span>
-              <span>•</span>
-              <span>{SITE_CONTENT.footer.poweredBy}</span>
+          <FooterColumn
+            title="Support"
+            links={[
+              { name: "Contact Us", href: "https://panaversity.org/contact" },
+              { name: "Our Team", href: "https://panaversity.org/team" },
+              { name: "Privacy Policy", href: "https://panaversity.org/privacy-policy" },
+              { name: "How To Enroll", href: "https://panaversity.org/panaversity_guide.pdf" },
+              { name: "FAQs", href: "https://panaversity.org/#faqs" },
+            ]}
+            className="lg:ml-20"
+          />
+
+          {/* WhatsApp Community section */}
+          <div className="col-span-2 mt-8 w-full text-sm sm:col-span-2 md:col-span-1 md:mt-0">
+            <h3 className="mb-2 text-lg font-semibold text-white">Join Our Community</h3>
+            <div className="space-y-4">
+              <Link
+                href="https://whatsapp.com/channel/0029VanobNVHbFV2oZLXX125"
+                target="_blank"
+                aria-label="Join WhatsApp Community"
+                className="inline-flex items-center gap-3 rounded-lg border border-gray-600 bg-gray-800/50 px-4 py-3 text-gray-300 transition-all duration-200 ease-in-out hover:border-green-400 hover:bg-green-400/10 hover:text-green-400"
+              >
+                <FaWhatsapp className="h-5 w-5" />
+                <span className="font-medium lg:text-xs xl:text-sm">WhatsApp Community</span>
+              </Link>
+              <p className="text-gray-400">
+                Join our WhatsApp community for latest AI updates & discussions.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </footer>
-  )
-}
 
-// Helper function to get icon components
-function getIconComponent(platformName: string) {
-  switch (platformName.toLowerCase()) {
-    case 'twitter':
-      return Twitter
-    case 'facebook':
-      return Facebook
-    case 'linkedin':
-      return Linkedin
-    case 'github':
-      return Github
-    default:
-      return Twitter
-  }
-}
+      {/* Bottom copyright section */}
+      <div className="mt-14 flex h-16 items-center justify-center bg-[#041F16] text-center text-sm text-gray-400">
+        © Copyright {currentYear} Panaversity, Inc.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

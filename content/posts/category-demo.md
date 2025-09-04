@@ -9,6 +9,7 @@ tags:
 category: 'Web Development'
 summary: 'Learn the fundamentals of Next.js 15 and how to build modern web applications with the latest features and best practices.'
 ai_readable: true
+featured: true
 ---
 
 # Getting Started with Next.js 15

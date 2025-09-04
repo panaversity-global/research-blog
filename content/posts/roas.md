@@ -5,6 +5,8 @@ author: Zia Khan
 tags:
   - panaversity
 ai_readable: true
+featured: true
+category: "AI & Machine Learning"
 ---
 ## 🚀 Introducing RecursiveAgenticOS (RAOS): The Self-Managing OS for AI Agents
 
